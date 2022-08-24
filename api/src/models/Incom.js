@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define(
     "incom",
     {
+      
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV1,

@@ -1,6 +1,6 @@
 const { Incom } = require("../db.js");
 
-//Controller GetIncoms
+//Controller GetIncoms.
 const getIncoms = async () => {
   const allIncoms = await Incom.findAll();
   return allIncoms;

@@ -1,12 +1,12 @@
 const { Expense } = require("../db.js");
 
-//Controller GetExpense
+//Controller GetExpense.
 const getExpense = async () => {
   const allExpenses = await Expense.findAll();
   return allExpenses;
 };
 
-//Controller PostExpense
+//Controller PostExpense.
 const postExpense = async (concept, amount, category) => {
   let newExpense = await Expense.create({
     concept: concept,
@@ -17,7 +17,7 @@ const postExpense = async (concept, amount, category) => {
   return newExpense;
 };
 
-//Controller UpdateExpense
+//Controller UpdateExpense.
 const updateExpense = async (id, concept, amount, category) => {
   let expenseUpdated = await Expense.findByPk(id);
   if (concept) {

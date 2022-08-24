@@ -1,7 +1,7 @@
 const { User, Incom, Expense } = require("../db.js");
 const { Op } = require("sequelize");
 
-// Controller GetUsers
+// Controller GetUsers.
 const getUsers = async () => {
   const allUsers = await User.findAll({
     include: [
@@ -12,7 +12,7 @@ const getUsers = async () => {
   return allUsers;
 };
 
-// Controller PostUsers
+// Controller PostUsers.
 const postUsers = async (firstName, lastName, email, password) => {
   const newUser = await User.findOrCreate({
     where: {
@@ -26,7 +26,7 @@ const postUsers = async (firstName, lastName, email, password) => {
   return newUser;
 };
 
-// Controller Authentication User
+// Controller Authentication User.
 const authentication = async (email, password) => {
   console.log(email, password);
   let user = await User.findOne({
