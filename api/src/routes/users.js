@@ -1,8 +1,8 @@
-
 const { Router } = require("express");
 const router = Router();
 const {
   getUsers,
+  getUser,
   postUsers,
   authentication,
   login,
@@ -13,6 +13,17 @@ const {
 router.get("/users", async (req, res, next) => {
   const allUsers = await getUsers();
   res.status(200).json(allUsers);
+});
+
+//GET USER
+router.get("/:email", async (req, res, next) => {
+  const { email } = req.params;
+  try {
+    let user = await getUser(email);
+    res.status(200).send(user);
+  } catch (error) {
+    next(error);
+  }
 });
 
 //POST USERS
@@ -29,11 +40,20 @@ router.post("/creationUser", async (req, res, next) => {
 });
 
 //USER AUTHENTICATION
-router.get("/authentication", async (req, res, next) => {
+router.get("/authentication/:email/:password", async (req, res, next) => {
   try {
-    const { email, password } = req.body;
-    let userAuthentication = await authentication(email, password);
-    res.status(200).send("User has started session");
+    const { email, password } = req.params;
+    let user = await authentication(email);
+    if (user) {
+      if (user.password === password) {
+        res.send("User has started session");
+      }
+      if (user.password !== password) {
+        res.send("Password incorrect");
+      }
+    } else {
+      res.send("User not found");
+    }
   } catch (error) {
     next(error);
   }

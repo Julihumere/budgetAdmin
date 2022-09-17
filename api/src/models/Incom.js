@@ -4,7 +4,6 @@ module.exports = (sequelize) => {
   sequelize.define(
     "incom",
     {
-      
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV1,
@@ -20,8 +19,8 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATEONLY,
-        defaultValue: DataTypes.NOW,
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       type: {
         type: DataTypes.STRING,

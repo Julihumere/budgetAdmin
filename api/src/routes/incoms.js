@@ -1,4 +1,3 @@
-
 const { Router } = require("express");
 const router = Router();
 const { Incom, User } = require("../db.js");
@@ -19,10 +18,10 @@ router.get("/incoms", async (req, res, next) => {
 });
 
 router.post("/creationIncom", async (req, res, next) => {
-  const { concept, amount, type, category, id } = req.body;
+  const { concept, amount, type, category, email, date } = req.body;
   try {
-    let newIncom = await postIncoms(concept, amount, category);
-    await newIncom.addUser(id);
+    let newIncom = await postIncoms(concept, amount, category, date);
+    await newIncom.addUser(email);
     res.json(newIncom);
   } catch (error) {
     next(error);

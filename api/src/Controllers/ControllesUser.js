@@ -12,6 +12,17 @@ const getUsers = async () => {
   return allUsers;
 };
 
+//Controller GetUser.
+const getUser = async (email) => {
+  const user = await User.findByPk(email, {
+    include: [
+      { model: Incom, through: { attributes: [] } },
+      { model: Expense, through: { attributes: [] } },
+    ],
+  });
+  return user;
+};
+
 // Controller PostUsers.
 const postUsers = async (firstName, lastName, email, password) => {
   const newUser = await User.findOrCreate({
@@ -27,14 +38,9 @@ const postUsers = async (firstName, lastName, email, password) => {
 };
 
 // Controller Authentication User.
-const authentication = async (email, password) => {
-  console.log(email, password);
+const authentication = async (email) => {
   let user = await User.findOne({
-    where: {
-      email: { [Op.iLike]: `${email}` },
-      password: { [Op.iLike]: `${password}` },
-    },
-    include: [{ model: Incom }, { model: Expense }],
+    where: { email: email },
   });
   return user;
 };
@@ -68,6 +74,7 @@ const logout = async (email, password) => {
 
 module.exports = {
   getUsers,
+  getUser,
   postUsers,
   authentication,
   login,

@@ -7,13 +7,15 @@ const getIncoms = async () => {
 };
 
 //Controller PostIncoms
-const postIncoms = async (concept, amount, category) => {
+const postIncoms = async (concept, amount, category, date) => {
   let newIncom = await Incom.create({
     concept: concept,
     amount: amount,
     type: "Incom",
     category: category,
+    date: date,
   });
+  console.log(newIncom);
   return newIncom;
 };
 

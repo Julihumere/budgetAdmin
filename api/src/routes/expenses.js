@@ -1,4 +1,3 @@
-
 const { Router } = require("express");
 const router = Router();
 const { Expense } = require("../db.js");
@@ -19,10 +18,10 @@ router.get("/expenses", async (req, res, next) => {
 });
 
 router.post("/creationExpense", async (req, res, next) => {
-  const { concept, amount, category, id } = req.body;
+  const { concept, amount, category, email, date } = req.body;
   try {
-    let newExpense = await postExpense(concept, amount, category);
-    await newExpense.addUser(id);
+    let newExpense = await postExpense(concept, amount, category, date);
+    await newExpense.addUser(email);
     res.json(newExpense);
   } catch (error) {
     next(error);

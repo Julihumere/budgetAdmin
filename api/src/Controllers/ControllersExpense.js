@@ -7,12 +7,13 @@ const getExpense = async () => {
 };
 
 //Controller PostExpense.
-const postExpense = async (concept, amount, category) => {
+const postExpense = async (concept, amount, category, date) => {
   let newExpense = await Expense.create({
     concept: concept,
     amount: amount,
     type: "Expense",
     category: category,
+    date: date,
   });
   return newExpense;
 };
