@@ -1,0 +1,246 @@
+.Home__container {
+  width: 100%;
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Home__container__name {
+  position: relative;
+  left: -30%;
+  top: 3%;
+}
+
+.Home__box {
+  width: 80%;
+  height: 90vh;
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  box-shadow: 2px 6px 18px #000;
+}
+.Home__box__header {
+  border-bottom: 0.1rem solid #000;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Home__box__add {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-right: 0.1rem solid #000;
+  height: 100%;
+}
+
+.Home__Add__button {
+  font-family: inherit;
+  display: inline-block;
+  line-height: 2.5em;
+  margin: 2rem;
+  width: 8rem;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.Home__Add__button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: #560bad;
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.Home__Add__button:hover {
+  color: #fff;
+}
+
+.Home__Add__button:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.Home__Add__button:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.Home__Add__button:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+
+.Home__box__filter {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Home__box__info {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+}
+
+.Home__box__info .incom {
+  width: 50%;
+  height: auto;
+  border-right: 0.1rem solid #000;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  justify-items: center;
+  overflow-y: scroll;
+}
+.incom::-webkit-scrollbar {
+  width: 5px;
+}
+
+.incom::-webkit-scrollbar-track {
+  background: #9e07ea;
+}
+
+.incom::-webkit-scrollbar-thumb {
+  background: #3a0ca3;
+}
+
+.Home__box__info .expense {
+  width: 50%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  justify-items: center;
+  overflow-y: scroll;
+}
+
+.expense::-webkit-scrollbar {
+  width: 5px;
+}
+
+.expense::-webkit-scrollbar-track {
+  background: #9e07ea;
+}
+
+.expense::-webkit-scrollbar-thumb {
+  background: #3a0ca3;
+}
+
+.Home__box__footer {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+}
+
+.Home__box__total__incom {
+  width: 50%;
+  height: 15vh;
+  border-right: 0.1rem solid #000;
+  border-bottom: 0.1rem solid #000;
+  border-top: 0.1rem solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.Home__box__total__incom h1 {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.Home__box__total__expense h1 {
+  color: #000;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.Home__box__total__balance h1 {
+  color: #fff;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.Home__box__total__expense {
+  width: 50%;
+  height: 15vh;
+  border-bottom: 0.1rem solid #000;
+  border-top: 0.1rem solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.Home__box__total__balance {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 375px) {
+  .Home__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .Home__container__name {
+    left: 0%;
+  }
+  .Home__box {
+    width: 95%;
+  }
+  .Home__Add__button {
+    font-size: 0.6rem;
+    width: 5rem;
+  }
+
+  .Home__box__info .incom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Home__box__info .expense {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Home__box__total__incom h1 {
+    font-size: 1rem;
+  }
+  .Home__box__total__expense h1 {
+    font-size: 1rem;
+  }
+  .Home__box__total__balance h1 {
+    font-size: 1rem;
+  }
+}

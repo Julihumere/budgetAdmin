@@ -1,0 +1,66 @@
+.Header__container {
+  backdrop-filter: blur(7px);
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: transparent;
+}
+
+.Header__title {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.Header__title img {
+  margin: 0;
+  width: 10rem;
+  height: 8rem;
+}
+
+.Header__title h1 {
+  color: white;
+  font-size: 3rem;
+  text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
+    1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191,
+    1px 18px 6px rgba(16, 16, 16, 0.4), 1px 22px 10px rgba(16, 16, 16, 0.5),
+    1px 25px 35px rgba(16, 16, 16, 0.5), 1px 30px 60px rgba(16, 16, 16, 0.5);
+}
+
+.Header__container button {
+  width: 6rem;
+  height: 3rem;
+  background: none;
+  border: none;
+  position: relative;
+  right: 5%;
+}
+/* RESPONSIVE */
+
+@media screen and (max-width: 375px) {
+  .Header__title img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .Header__title h1 {
+    color: white;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191,
+      1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191,
+      1px 18px 6px rgba(16, 16, 16, 0.4), 1px 22px 10px rgba(16, 16, 16, 0.5),
+      1px 25px 35px rgba(16, 16, 16, 0.5), 1px 30px 60px rgba(16, 16, 16, 0.5);
+  }
+
+  .Header__container button {
+    width: 6rem;
+    height: 3rem;
+    background: none;
+    border: none;
+    position: relative;
+    right: 5%;
+  }
+}

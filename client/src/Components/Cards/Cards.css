@@ -1,0 +1,113 @@
+/* From uiverse.io by @benjimich */
+.Card__container {
+  width: 12rem;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f2f2f3;
+  border-radius: 12px;
+  box-shadow: 4px 12px 24px rgb(59, 59, 59);
+  margin-top: 1rem;
+}
+
+.Card__button {
+  width: 100%;
+  height: 6vh;
+  background-color: #560bad;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Card__button button {
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+.Card__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  margin-top: 0.5rem;
+  aspect-ratio: 1;
+  border-radius: 30%;
+  background: #f2f2f3;
+  margin-bottom: 0.4em;
+  box-shadow: -5px -5px 8px #ffffff7a, 5px 5px 8px #a9a9aa7a;
+}
+
+.Card__img img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.Card__info {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  text-align: center;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 194, 255, 1) 0%,
+    rgba(0, 86, 255, 1) 100%
+  );
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Card__info > span {
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.amount {
+  width: 95%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 0.9rem;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.category {
+  width: 95%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 0.9rem;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.Card__info .date {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.7rem;
+}
+
+.Modal__form .modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 375px) {
+  .Card__container {
+    margin-top: 1rem;
+    width: 9rem;
+    height: 16rem;
+  }
+}

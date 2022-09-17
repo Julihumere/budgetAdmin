@@ -1,0 +1,123 @@
+.Register__container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.Register__card {
+  width: 30%;
+  min-height: auto;
+  margin-top: 2rem;
+  border-radius: 20px;
+  background: #f4f6fb;
+  border: 1px solid white;
+  box-shadow: 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
+}
+
+.Register__form {
+  padding: 25px;
+}
+
+.Register__card_header {
+  display: flex;
+  align-items: center;
+}
+
+.Register__card svg {
+  color: #7878bd;
+  margin-bottom: 1.25rem;
+  margin-right: 0.3rem;
+}
+
+.Register__form_heading {
+  padding-bottom: 1.25rem;
+  font-size: 1.4rem;
+  color: #7878bd;
+}
+
+.Register__field {
+  padding-bottom: 0.6rem;
+  width: 100%;
+}
+
+.Register__input {
+  border-radius: 5px;
+  background-color: #e9e9f7;
+  padding: 0.3rem;
+  width: 100%;
+  color: #7a7ab3;
+  border: 1px solid #dadaf7;
+}
+
+.Register__input:focus-visible {
+  outline: 1px solid #aeaed6;
+}
+
+.Register__input::placeholder {
+  color: #bcbcdf;
+}
+
+.Register__field label {
+  color: #b2bac8;
+  font-size: 0.9rem;
+  display: block;
+  padding-bottom: 4px;
+}
+
+.Register__button {
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  border: unset;
+  border-radius: 15px;
+  color: #7878bd;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 1rem;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.Register__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #560bad;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.Register__button:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.Register__button:hover::before {
+  width: 100%;
+}
+
+.error {
+  margin: 0;
+  color: red;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 375px) {
+  .Register__container {
+    height: auto;
+  }
+  .Register__card {
+    margin-top: 2rem;
+    width: 80%;
+  }
+}

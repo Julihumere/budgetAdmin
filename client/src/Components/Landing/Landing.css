@@ -1,0 +1,81 @@
+.Landing__container {
+  width: 100%;
+  min-height: 77vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Landing__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%;
+  height: 50vh;
+  margin-top: 2rem;
+  border-radius: 30px;
+  background: #f4f6fb;
+}
+
+.Landing__card div {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Landing__card h1 {
+  font-weight: 900;
+  color: #7878bd;
+  text-shadow: 1px 2px 3px #7878bd;
+}
+
+.Landing__card h4 {
+  color: #7878bd;
+}
+.Landing__button {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #7878bd;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.Landing__button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #560bad;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.Landing__button:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.Landing__button:hover::before {
+  width: 100%;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 375px) {
+  .Landing__card {
+    width: 80%;
+    height: 60vh;
+  }
+}
