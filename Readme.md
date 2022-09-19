@@ -5,9 +5,11 @@ The app was created with a database (postgres), should create archive ".env" in 
 - Deploy Backend
 
 1. cd api
-2. npm start
+2. npm install
+3. npm start
 
 - Deploy Frontend
 
 1. cd client
-2. npm start
+2. npm install
+3. npm start
