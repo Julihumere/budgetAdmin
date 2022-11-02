@@ -41,11 +41,12 @@ router.post("/creationUser", async (req, res, next) => {
 });
 
 //USER AUTHENTICATION
-router.get("/authentication/:email/:password", async (req, res, next) => {
+router.post("/authentication", async (req, res, next) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.params;
     let user = await authentication(email);
     const checkPassword = await compare(password, user.password);
+
     if (checkPassword || !checkPassword) {
       if (checkPassword === true) {
         res.send("User has started session");
@@ -74,9 +75,9 @@ router.put("/login", async (req, res, next) => {
 
 //USER LOGOUT
 router.put("/logout", async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
   try {
-    let user = await logout(email, password);
+    let user = await logout(email);
     res.status(200).send("Usar has closed session");
   } catch (error) {
     next(error);

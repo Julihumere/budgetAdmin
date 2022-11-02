@@ -47,13 +47,13 @@ const authentication = async (email) => {
 };
 
 //Controller Login User
-const login = async (email, password) => {
+const login = async (email) => {
   let userLogin = await await User.findOne({
     where: {
       email: { [Op.iLike]: `${email}` },
-      password: { [Op.iLike]: `${password}` },
     },
   });
+  console.log(userLogin);
   userLogin.update({ status: "Login" });
   userLogin.save();
   return userLogin;
@@ -61,11 +61,10 @@ const login = async (email, password) => {
 
 //Controller Logout User
 
-const logout = async (email, password) => {
+const logout = async (email) => {
   let userLogout = await await User.findOne({
     where: {
       email: { [Op.iLike]: `${email}` },
-      password: { [Op.iLike]: `${password}` },
     },
   });
   userLogout.update({ status: "Logout" });
@@ -81,6 +80,7 @@ const encrypt = async (textPlain) => {
 
 // Comparacion
 const compare = async (passwordPlain, hashPassword) => {
+  console.log(passwordPlain);
   return await bcrypt.compare(passwordPlain, hashPassword);
 };
 
