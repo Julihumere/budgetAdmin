@@ -15,7 +15,6 @@ const URL = "http://localhost:3001";
 
 //Get user
 export const getUser = (email) => (dispatch) => {
-  console.log("action", email);
   try {
     let user = axios({
       method: "get",
@@ -33,7 +32,6 @@ export const getUser = (email) => (dispatch) => {
 
 //Post Users
 export const postUsers = (payload) => (dispatch) => {
-  console.log(payload);
   try {
     let newUsers = axios({
       method: "post",
@@ -71,7 +69,6 @@ export const addIncom = (payload) => () => {
 
 //Edit Incom
 export const editIncom = (payload) => () => {
-  console.log(payload);
   try {
     axios({
       method: "put",
@@ -124,7 +121,6 @@ export const addExpense = (payload) => () => {
 
 //Edit Expense
 export const editExpense = (payload) => () => {
-  console.log(payload);
   try {
     axios({
       method: "put",
