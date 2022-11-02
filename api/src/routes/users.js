@@ -7,6 +7,7 @@ const {
   authentication,
   login,
   logout,
+  compare,
 } = require("../Controllers/ControllesUser.js");
 
 // GET USERS
@@ -44,11 +45,12 @@ router.get("/authentication/:email/:password", async (req, res, next) => {
   try {
     const { email, password } = req.params;
     let user = await authentication(email);
-    if (user) {
-      if (user.password === password) {
+    const checkPassword = await compare(password, user.password);
+    if (checkPassword || !checkPassword) {
+      if (checkPassword === true) {
         res.send("User has started session");
       }
-      if (user.password !== password) {
+      if (checkPassword === false) {
         res.send("Password incorrect");
       }
     } else {

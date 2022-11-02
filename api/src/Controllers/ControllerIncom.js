@@ -15,7 +15,6 @@ const postIncoms = async (concept, amount, category, date) => {
     category: category,
     date: date,
   });
-  console.log(newIncom);
   return newIncom;
 };
 

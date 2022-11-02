@@ -1,5 +1,6 @@
 const { User, Incom, Expense } = require("../db.js");
 const { Op } = require("sequelize");
+const bcrypt = require("bcryptjs");
 
 // Controller GetUsers.
 const getUsers = async () => {
@@ -25,15 +26,15 @@ const getUser = async (email) => {
 
 // Controller PostUsers.
 const postUsers = async (firstName, lastName, email, password) => {
+  const passwordHash = await encrypt(password);
   const newUser = await User.findOrCreate({
     where: {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: password,
+      password: passwordHash,
     },
   });
-
   return newUser;
 };
 
@@ -72,6 +73,17 @@ const logout = async (email, password) => {
   return userLogout;
 };
 
+// Encriptacion
+const encrypt = async (textPlain) => {
+  const hash = await bcrypt.hash(textPlain, 10);
+  return hash;
+};
+
+// Comparacion
+const compare = async (passwordPlain, hashPassword) => {
+  return await bcrypt.compare(passwordPlain, hashPassword);
+};
+
 module.exports = {
   getUsers,
   getUser,
@@ -79,4 +91,5 @@ module.exports = {
   authentication,
   login,
   logout,
+  compare,
 };
