@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import "./Cards.css";
 import {
   editIncom,
@@ -13,11 +12,9 @@ import Arrow_down from "../../img/Arrow_down.png";
 import Arrow_up from "../../img/Arrow_up.png";
 import ButtonModal from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Swal from "sweetalert2";
 
 export default function Cards(props) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -13,15 +12,19 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState({});
+  const [error] = useState({});
 
   //Auth
   const [login, setLogin] = useState("");
   function auth(user) {
-    axios
-      .get(
-        `http://localhost:3001/user/authentication/${user.email}/${user.password}`
-      )
+    axios({
+      method: "post",
+      url: "http://localhost:3001/user/authentication",
+      data: {
+        email: user.email,
+        password: user.password,
+      },
+    })
       .then((res) => setLogin(res.data))
       .then(
         axios({
@@ -33,10 +36,7 @@ export default function Login() {
           },
         })
       )
-      .then(
-        cookies.set("email", user.email),
-        cookies.set("password", user.password)
-      );
+      .then(cookies.set("email", user.email));
   }
   useEffect(() => {
     if (login === "User has started session") {
@@ -65,6 +65,7 @@ export default function Login() {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [login]);
 
   const onChange = (e) => {

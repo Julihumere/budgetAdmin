@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../Redux/Actions";
@@ -20,6 +20,7 @@ export default function Home() {
     if (cookies.get("email") !== cookieEmail) {
       navigate("/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Total Incom

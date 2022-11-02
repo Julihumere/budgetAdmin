@@ -1,15 +1,14 @@
 .Register__container {
   width: 100%;
-  height: auto;
+  height: 70vh;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 4rem;
 }
 
 .Register__card {
   width: 30%;
   min-height: auto;
-  margin-top: 2rem;
   border-radius: 20px;
   background: #f4f6fb;
   border: 1px solid white;
@@ -17,7 +16,7 @@
 }
 
 .Register__form {
-  padding: 25px;
+  padding: 1.5rem;
 }
 
 .Register__card_header {
@@ -112,12 +111,13 @@
 
 /* RESPONSIVE */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 490px) {
   .Register__container {
-    height: auto;
+    height: 70vh;
+    display: flex;
+    align-items: center;
   }
   .Register__card {
-    margin-top: 2rem;
     width: 80%;
   }
 }

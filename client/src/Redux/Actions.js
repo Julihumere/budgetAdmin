@@ -16,7 +16,7 @@ const URL = "http://localhost:3001";
 //Get user
 export const getUser = (email) => (dispatch) => {
   try {
-    let user = axios({
+    axios({
       method: "get",
       url: `${URL}/user/${email}`,
     }).then((res) => {
@@ -33,7 +33,7 @@ export const getUser = (email) => (dispatch) => {
 //Post Users
 export const postUsers = (payload) => (dispatch) => {
   try {
-    let newUsers = axios({
+    axios({
       method: "post",
       url: `${URL}/user/creationUser`,
       data: {
@@ -51,7 +51,7 @@ export const postUsers = (payload) => (dispatch) => {
 // Add Incom
 export const addIncom = (payload) => () => {
   try {
-    let newIncom = axios({
+    axios({
       method: "post",
       url: `${URL}/incom/creationIncom`,
       data: {
@@ -103,7 +103,7 @@ export const deleteIncom = (payload) => () => {
 // Add Expense
 export const addExpense = (payload) => () => {
   try {
-    let newExpense = axios({
+    axios({
       method: "post",
       url: `${URL}/expense/creationExpense`,
       data: {

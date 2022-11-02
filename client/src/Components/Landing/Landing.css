@@ -1,6 +1,6 @@
 .Landing__container {
   width: 100%;
-  min-height: 77vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,9 +73,9 @@
 
 /* RESPONSIVE */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 490px) {
   .Landing__card {
     width: 80%;
-    height: 60vh;
+    height: 45vh;
   }
 }

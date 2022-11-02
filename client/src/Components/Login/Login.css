@@ -106,7 +106,7 @@
 
 /* RESPONSIVE */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 490px) {
   .Login__card {
     width: 80%;
   }

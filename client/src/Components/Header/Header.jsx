@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Header.css";
 import { useNavigate, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser } from "../../Redux/Actions";
 import logo from "../../img/Coin flip.gif";
 import { GrLogout } from "react-icons/gr";
@@ -12,17 +12,16 @@ export default function Header() {
   const cookies = new Cookies();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const password = cookies.get("password");
   const email = cookies.get("email");
-  const [user, setUser] = useState({
+  const [user] = useState({
     email: email,
-    password: password,
   });
-  const name = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getUser(email));
-  }, [email]);
+  }, [email, dispatch]);
+
+  console.log(user);
 
   const handleLogOut = (e) => {
     axios({
@@ -30,7 +29,6 @@ export default function Header() {
       url: "http://localhost:3001/user/logout",
       data: {
         email: user.email,
-        password: user.password,
       },
     })
       .then(cookies.remove("email"))
