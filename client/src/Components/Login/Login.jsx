@@ -1,55 +1,36 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./Login.css";
 import Swal from "sweetalert2";
 import Cookie from "universal-cookie";
+import { auth, logIn } from "../../Redux/Actions";
 
 export default function Login() {
   const cookies = new Cookie();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const [error] = useState({});
+  const msg = useSelector((state) => state.msg);
 
-  //Auth
-  const [login, setLogin] = useState("");
-  function auth(user) {
-    axios({
-      method: "post",
-      url: "http://localhost:3001/user/authentication",
-      data: {
-        email: user.email,
-        password: user.password,
-      },
-    })
-      .then((res) => setLogin(res.data))
-      .then(
-        axios({
-          method: "put",
-          url: `http://localhost:3001/user/login`,
-          data: {
-            email: user.email,
-            password: user.password,
-          },
-        })
-      )
-      .then(cookies.set("email", user.email));
-  }
   useEffect(() => {
-    if (login === "User has started session") {
+    if (msg === "User has started session") {
+      cookies.set("email", user.email);
       navigate("/home");
     }
-    if (login === "Password incorrect") {
+    if (msg === "Password incorrect") {
       Swal.fire({
         title: "Password is incorrect",
         icon: "error",
         confirmButtonText: "Ok",
       });
     }
-    if (login === "User not found") {
+    if (msg === "User not found") {
       Swal.fire({
         title: "Please, correct the errors",
         text: "Do you want register?",
@@ -66,7 +47,7 @@ export default function Login() {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [login]);
+  }, [msg]);
 
   const onChange = (e) => {
     setUser({
@@ -77,7 +58,8 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    auth(user);
+    dispatch(auth(user));
+    dispatch(logIn(user));
   };
   return (
     <div className="Login__container">

@@ -10,6 +10,9 @@ export const PUT_UPDATE_INCOM = "PUT_UPDATE_INCOM";
 export const PUT_UPDATE_EXPENSE = "PUT_UPDATE_EXPENSE";
 export const DELETE_INCOMS = "DELETE_INCOMS";
 export const DELETE_EXPENSE = "DELETE_EXPENSE";
+export const ACCESS = "ACCESS";
+export const DENIED = "DENIED";
+export const LOGOUT = "LOGOUT";
 
 const URL = "http://localhost:3001";
 
@@ -149,5 +152,80 @@ export const deleteExpense = (payload) => () => {
     });
   } catch (error) {
     console.log("deleteExpense", error);
+  }
+};
+
+//Auth
+export const auth = (payload) => (dispatch) => {
+  try {
+    axios({
+      method: "post",
+      url: `${URL}/user/auth`,
+      data: {
+        email: payload.email,
+        password: payload.password,
+      },
+    })
+      .then((res) => {
+        if (res.data === "User has started session") {
+          dispatch({
+            type: ACCESS,
+            payload: res.data,
+          });
+        }
+        if (res.data === "Password incorrect") {
+          dispatch({
+            type: DENIED,
+            payload: res.data,
+          });
+        }
+        if (res.data === "User not found") {
+          dispatch({
+            type: DENIED,
+            payload: res.data,
+          });
+        }
+      })
+      .then(() => {
+        dispatch({
+          type: LOGOUT,
+        });
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Login
+export const logIn = (payload) => () => {
+  try {
+    axios({
+      method: "put",
+      url: `${URL}/user/login`,
+      data: {
+        email: payload.email,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Logout
+export const logOut = (payload) => (dispatch) => {
+  try {
+    axios({
+      method: "put",
+      url: `${URL}/user/logout`,
+      data: {
+        email: payload,
+      },
+    }).then(() => {
+      dispatch({
+        type: LOGOUT,
+      });
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

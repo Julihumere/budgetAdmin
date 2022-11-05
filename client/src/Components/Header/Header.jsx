@@ -7,6 +7,7 @@ import { getUser } from "../../Redux/Actions";
 import logo from "../../img/Coin flip.gif";
 import { GrLogout } from "react-icons/gr";
 import Cookies from "universal-cookie";
+import { logOut } from "./../../Redux/Actions";
 
 export default function Header() {
   const cookies = new Cookies();
@@ -16,35 +17,34 @@ export default function Header() {
   const [user] = useState({
     email: email,
   });
-
+  console.log(email);
   useEffect(() => {
     dispatch(getUser(email));
-  }, [email, dispatch]);
-
-  console.log(user);
+  }, [user, dispatch]);
 
   const handleLogOut = (e) => {
-    axios({
-      method: "put",
-      url: "http://localhost:3001/user/logout",
-      data: {
-        email: user.email,
-      },
-    })
-      .then(cookies.remove("email"))
-      .then(navigate("/"));
+    dispatch(logOut(email));
+    cookies.remove("email");
+    navigate("/");
   };
+  console.log(email);
   return (
     <div className="Header__container">
       <div className="Header__title">
         <img src={logo} alt="" className="Header__img" />
-        <Link to={"/home"}>
+        {email !== undefined ? (
+          <Link to={"/home"}>
+            <h1>Budget Admin</h1>
+          </Link>
+        ) : (
           <h1>Budget Admin</h1>
-        </Link>
+        )}
       </div>
-      <button onClick={handleLogOut}>
-        Logout <GrLogout />
-      </button>
+      {email !== undefined ? (
+        <button onClick={handleLogOut}>
+          Logout <GrLogout />
+        </button>
+      ) : null}
     </div>
   );
 }

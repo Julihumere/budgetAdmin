@@ -47,7 +47,6 @@ export default function AddIncom() {
     return errors;
   };
 
-  console.log(error);
   const onSubmit = async (e) => {
     e.preventDefault();
     setError(validate(incom));

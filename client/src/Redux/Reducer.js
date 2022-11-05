@@ -1,10 +1,19 @@
-import { GET_BALANCE, GET_INCOMS, GET_EXPENSES, GET_USER } from "./Actions.js";
+import {
+  GET_BALANCE,
+  GET_INCOMS,
+  GET_EXPENSES,
+  GET_USER,
+  ACCESS,
+  DENIED,
+  LOGOUT,
+} from "./Actions.js";
 
 const initialState = {
   user: [],
   balance: [],
   incoms: [],
   expenses: [],
+  msg: "",
 };
 
 export default function Reducer(state = initialState, action) {
@@ -31,6 +40,24 @@ export default function Reducer(state = initialState, action) {
       return {
         ...state,
         expenses: action.payload,
+      };
+    }
+    case ACCESS: {
+      return {
+        ...state,
+        msg: action.payload,
+      };
+    }
+    case DENIED: {
+      return {
+        ...state,
+        msg: action.payload,
+      };
+    }
+    case LOGOUT: {
+      return {
+        ...state,
+        msg: "",
       };
     }
     default:
