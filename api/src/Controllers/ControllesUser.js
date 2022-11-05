@@ -41,8 +41,14 @@ const postUsers = async (firstName, lastName, email, password) => {
 // Controller Authentication User.
 const authentication = async (email) => {
   let user = await User.findOne({
-    where: { email: email },
+    where: {
+      email: { [Op.iLike]: `${email}` },
+    },
   });
+  console.log("PRUEBA", user);
+  if (user === null) {
+    return "User not found";
+  }
   return user;
 };
 
@@ -53,7 +59,6 @@ const login = async (email) => {
       email: { [Op.iLike]: `${email}` },
     },
   });
-  console.log(userLogin);
   userLogin.update({ status: "Login" });
   userLogin.save();
   return userLogin;
@@ -62,6 +67,7 @@ const login = async (email) => {
 //Controller Logout User
 
 const logout = async (email) => {
+  console.log("LOGOUT", email);
   let userLogout = await await User.findOne({
     where: {
       email: { [Op.iLike]: `${email}` },
@@ -80,7 +86,6 @@ const encrypt = async (textPlain) => {
 
 // Comparacion
 const compare = async (passwordPlain, hashPassword) => {
-  console.log(passwordPlain);
   return await bcrypt.compare(passwordPlain, hashPassword);
 };
 

@@ -41,21 +41,24 @@ router.post("/creationUser", async (req, res, next) => {
 });
 
 //USER AUTHENTICATION
-router.post("/authentication", async (req, res, next) => {
+router.post("/auth", async (req, res, next) => {
   const { email, password } = req.body;
+
   try {
     let user = await authentication(email);
-    const checkPassword = await compare(password, user.password);
-
-    if (checkPassword || !checkPassword) {
-      if (checkPassword === true) {
-        res.send("User has started session");
-      }
-      if (checkPassword === false) {
-        res.send("Password incorrect");
-      }
-    } else {
+    if (user === "User not found") {
       res.send("User not found");
+    } else {
+      const checkPassword = await compare(password, user.password);
+      console.log("CHECK", checkPassword);
+      if (checkPassword || !checkPassword) {
+        if (checkPassword === true) {
+          res.send("User has started session");
+        }
+        if (checkPassword === false) {
+          res.send("Password incorrect");
+        }
+      }
     }
   } catch (error) {
     next(error);
@@ -64,9 +67,9 @@ router.post("/authentication", async (req, res, next) => {
 
 //USER LOGIN
 router.put("/login", async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email } = req.body;
   try {
-    let user = await login(email, password);
+    let user = await login(email);
     res.status(200).send("Usar has started session");
   } catch (error) {
     next(error);
