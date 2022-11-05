@@ -1,5 +1,4 @@
 .Header__container {
-  backdrop-filter: blur(7px);
   width: 100%;
   height: 20vh;
   display: flex;
@@ -31,13 +30,52 @@
     1px 25px 35px rgba(16, 16, 16, 0.5), 1px 30px 60px rgba(16, 16, 16, 0.5);
 }
 
-.Header__container button {
-  width: 6rem;
-  height: 3rem;
-  background: none;
-  border: none;
+.Header__button__logout {
+  font-family: inherit;
+  display: inline-block;
+  line-height: 2.5em;
+  margin: 2rem;
+  width: 7.5rem;
   position: relative;
-  right: 5%;
+  overflow: hidden;
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--color-background-button);
+  border: none;
+}
+
+.Header__button__logout:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color-hover-button);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.Header__button__logout:hover {
+  color: #fff;
+}
+
+.Header__button__logout:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.Header__button__logout:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.Header__button__logout:active:before {
+  background: var(--color-hover-button);
+  transition: background 0s;
 }
 /* RESPONSIVE */
 

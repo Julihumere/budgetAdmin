@@ -7,9 +7,9 @@
 }
 
 .AddIncom__form {
-  width: 30%;
+  width: 25%;
   height: 80%;
-  background-color: #9801e6;
+  background-color: var(--color-card);
   border-radius: 20px;
   border: 0.1rem solid #fff;
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 .AddIncom__form label {
-  color: #fff;
+  color: var(--color-letras);
   font-size: 1.3rem;
   font-weight: 800;
 }
@@ -45,9 +45,9 @@
   margin-top: 1.5rem;
   border: unset;
   border-radius: 10px;
-  color: #fff;
+  color: var(--color-letras);
   z-index: 1;
-  background: none;
+  background: var(--color-background-button);
   position: relative;
   font-weight: 1000;
   font-size: 1rem;
@@ -64,7 +64,7 @@
   height: 100%;
   width: 0;
   border-radius: 10px;
-  background-color: #560bad;
+  background-color: var(--color-hover-button);
   z-index: -1;
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;

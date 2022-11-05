@@ -10,15 +10,17 @@
 .Home__container__name {
   position: relative;
   left: -30%;
-  top: 3%;
+  color: var(--color-primario);
 }
 
 .Home__box {
   width: 80%;
   height: 90vh;
-  backdrop-filter: blur(8px);
+  background-color: #232363;
+  backdrop-filter: blur(7px);
   border-radius: 30px;
   box-shadow: 2px 6px 18px #000;
+  margin-bottom: 4rem;
 }
 .Home__box__header {
   border-bottom: 0.1rem solid #000;
@@ -42,7 +44,7 @@
   display: inline-block;
   line-height: 2.5em;
   margin: 2rem;
-  width: 8rem;
+  width: 7.5rem;
   position: relative;
   overflow: hidden;
   transition: color 0.5s;
@@ -51,7 +53,7 @@
   border-radius: 6px;
   font-weight: 700;
   cursor: pointer;
-  background: none;
+  background: var(--color-background-button);
   border: none;
 }
 
@@ -59,7 +61,7 @@
   content: "";
   position: absolute;
   z-index: -1;
-  background: #560bad;
+  background: var(--color-hover-button);
   height: 150px;
   width: 200px;
   border-radius: 50%;
@@ -161,14 +163,14 @@
 }
 
 .Home__box__total__incom h1 {
-  color: #000;
+  color: var(--color-primario);
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .Home__box__total__expense h1 {
-  color: #000;
+  color: var(--color-primario);
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;

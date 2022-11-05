@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap");
 
+:root {
+  --color-primario: #f4f6fb;
+  --color-letras: #232363;
+  --color-hover-button: #560bad;
+  --color-card: #8689d9;
+  --color-background-button: #ffff;
+  --color-background-input: #e9e9f7;
+}
 * {
   font-family: "Space Grotesk", sans-serif;
 }
 body {
   margin: 0;
-  background-image: url("../src/img/BackgroundPage.jpg");
+  background-image: url("../src/img/backgroundPage.jpg");
   background-size: cover;
+  background-attachment: fixed;
 }
 
 a:link,
@@ -14,4 +23,13 @@ a:visited,
 a:active {
   text-decoration: none;
   color: black;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #9e07ea;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a0ca3;
 }

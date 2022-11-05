@@ -41,7 +41,7 @@ export default function Header() {
         )}
       </div>
       {email !== undefined ? (
-        <button onClick={handleLogOut}>
+        <button onClick={handleLogOut} className="Header__button__logout">
           Logout <GrLogout />
         </button>
       ) : null}

@@ -1,3 +1,10 @@
+:root {
+  --color-primario: #f4f6fb;
+  --color-letras: #232363;
+  --color-hover-button: #560bad;
+  --color-card: #8689d9;
+}
+
 .Login__container {
   width: 100%;
   height: 70vh;
@@ -9,10 +16,9 @@
 .Login__card {
   width: 30%;
   min-height: auto;
-  background: #f4f6fb;
+  background: var(--color-card);
   border-radius: 20px;
   border: 1px solid white;
-  box-shadow: 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
 }
 
 .Login__form {
@@ -24,16 +30,10 @@
   align-items: center;
 }
 
-.Login__card svg {
-  color: #7878bd;
-  margin-bottom: 1.25rem;
-  margin-right: 0.3rem;
-}
-
 .Login__form_heading {
   padding-bottom: 1.25rem;
-  font-size: 1.25rem;
-  color: #7878bd;
+  font-size: 2rem;
+  color: var(--color-letras);
 }
 
 .Login__field {
@@ -46,7 +46,7 @@
   background-color: #e9e9f7;
   padding: 0.3rem;
   width: 100%;
-  color: #7a7ab3;
+  color: var(--color-letras);
   border: 1px solid #dadaf7;
 }
 
@@ -55,11 +55,11 @@
 }
 
 .Login__input::placeholder {
-  color: #bcbcdf;
+  color: var(--color-letras);
 }
 
 .Login__field label {
-  color: #b2bac8;
+  color: var(--color-letras);
   font-size: 0.9rem;
   display: block;
   padding-bottom: 0.3rem;
@@ -70,7 +70,7 @@
   margin-top: 1.5rem;
   border: unset;
   border-radius: 15px;
-  color: #7878bd;
+  color: var(--color-letras);
   z-index: 1;
   background: #e8e8e8;
   position: relative;
@@ -89,7 +89,7 @@
   height: 100%;
   width: 0;
   border-radius: 15px;
-  background-color: #560bad;
+  background-color: var(--color-hover-button);
   z-index: -1;
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
