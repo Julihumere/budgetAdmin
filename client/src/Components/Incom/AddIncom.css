@@ -1,3 +1,4 @@
+@import "react-calendar/dist/Calendar.css";
 .AddIncom__container {
   width: 100%;
   height: 80vh;
@@ -7,7 +8,7 @@
 }
 
 .AddIncom__form {
-  width: 25%;
+  width: 35%;
   height: 80%;
   background-color: var(--color-card);
   border-radius: 20px;
@@ -32,6 +33,20 @@
 .AddIncom__form input {
   border: none;
   border-radius: 10px;
+  width: 100%;
+  height: 2rem;
+}
+
+.calendar {
+  position: absolute;
+  left: 70%;
+  bottom: 15%;
+  z-index: 10;
+  width: 25%;
+  height: 50vh;
+  padding: 1rem;
+  background-color: var(--color-primario);
+  border: none;
 }
 
 .AddIncom__form p {
@@ -40,9 +55,8 @@
   margin-top: 0.2rem;
 }
 
-.AddIncom__form button {
+.AddIncom__form .AddIncom__button_submit {
   padding: 0.5rem 1rem;
-  margin-top: 1.5rem;
   border: unset;
   border-radius: 10px;
   color: var(--color-letras);
@@ -56,7 +70,7 @@
   overflow: hidden;
 }
 
-.AddIncom__form button::before {
+.AddIncom__form .AddIncom__button_submit::before {
   content: "";
   position: absolute;
   top: 0;
@@ -70,12 +84,12 @@
   transition: all 250ms;
 }
 
-.AddIncom__form button:hover {
+.AddIncom__form .AddIncom__button_submit:hover {
   color: #fff;
   cursor: pointer;
 }
 
-.AddIncom__form button:hover::before {
+.AddIncom__form .AddIncom__button_submit:hover::before {
   width: 100%;
 }
 
