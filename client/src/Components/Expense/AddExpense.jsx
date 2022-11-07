@@ -5,18 +5,32 @@ import { useNavigate } from "react-router-dom";
 import { addExpense } from "../../Redux/Actions";
 import Cookies from "universal-cookie";
 import Swal from "sweetalert2";
+import { Calendar } from "react-calendar";
+
 export default function AddIncom() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cookies = new Cookies();
   const cookieEmail = cookies.get("email");
+  const [date, setDate] = useState(new Date());
   const [expense, setExpense] = useState({
     concept: "",
     amount: "",
     category: "",
+    date: date.toLocaleDateString(),
     email: cookieEmail,
   });
   const [error, setError] = useState({});
+
+  const [calendar, setCalendar] = useState(false);
+
+  const onChangeDate = (e) => {
+    setDate(e);
+    setExpense({
+      ...expense,
+      date: e.toLocaleDateString(),
+    });
+  };
 
   const onChange = (e) => {
     setExpense({
@@ -38,10 +52,6 @@ export default function AddIncom() {
     }
     if (!input.date) {
       errors.date = "Date is required";
-    } else if (
-      !/^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/.test(input.date)
-    ) {
-      errors.date = "Date must be dd/mm/yyyy";
     }
     return errors;
   };
@@ -110,10 +120,22 @@ export default function AddIncom() {
             name="date"
             value={expense.date}
             onChange={onChange}
+            onClick={setCalendar}
+            readOnly
           />
+          {calendar && (
+            <Calendar
+              value={date}
+              onChange={onChangeDate}
+              className="calendar"
+              maxDate={new Date()}
+            />
+          )}
           {error.date && <p>{error.date}</p>}
         </div>
-        <button type="submit">Create!</button>
+        <button className="AddIncom__button_submit" type="submit">
+          Create!
+        </button>
       </form>
     </div>
   );

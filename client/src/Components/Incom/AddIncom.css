@@ -40,15 +40,13 @@
 .calendar {
   position: absolute;
   left: 70%;
-  bottom: 15%;
+  bottom: 10%;
   z-index: 10;
   width: 25%;
-  height: 50vh;
+  height: auto;
   padding: 1rem;
-  background-color: var(--color-primario);
   border: none;
 }
-
 .AddIncom__form p {
   color: rgb(133, 0, 0);
   margin-bottom: -1rem;
