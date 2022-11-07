@@ -1,10 +1,6 @@
 :root {
-  --color-primario: #f4f6fb;
-  --color-letras: #232363;
-  --color-hover-button: #560bad;
-  --color-card: #8689d9;
-  --color-background-button: #ffff;
-  --color-background-input: #e9e9f7;
+  --color-overview: #8689d9;
+  --color-card-overview: #232363;
 }
 
 .Landing__container {
@@ -20,7 +16,7 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 4rem;
-  background-color: var(--color-primario);
+  background-color: var(--color-overview);
   border-radius: 20px;
 }
 
@@ -29,11 +25,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 40%;
+  position: relative;
+  left: 2%;
 }
 
 .img h1 {
   font-weight: 900;
-  color: var(--color-letras);
+  color: var(--color-letras-overview);
   text-shadow: 1px 2px 3px #2e2ef9;
   font-size: 2rem;
 }
@@ -43,11 +42,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 40%;
-  height: 50vh;
-  margin-top: 2rem;
-  border-radius: 30px;
-  background: var(--color-card);
+  width: 50%;
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  background: var(--color-card-overview);
+  position: relative;
+  left: 4%;
 }
 
 .Landing__card div {
@@ -58,18 +59,18 @@
 
 .Landing__card h1 {
   font-weight: 900;
-  color: var(--color-letras);
+  color: var(--color-letras-overview);
   text-shadow: 1px 2px 3px #7878bd;
   font-size: 2rem;
 }
 
 .Landing__card h4 {
-  color: var(--color-letras);
+  color: var(--color-letras-overview);
   font-size: 1rem;
 }
 .Landing__button {
   padding: 15px 25px;
-  border: unset;
+  border: none;
   border-radius: 15px;
   color: var(--color-letras);
   z-index: 1;
@@ -90,7 +91,7 @@
   height: 100%;
   width: 0;
   border-radius: 15px;
-  background-color: #560bad;
+  background-color: var(--color-hover-button-overview);
   z-index: -1;
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;

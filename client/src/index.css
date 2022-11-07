@@ -7,6 +7,11 @@
   --color-card: #8689d9;
   --color-background-button: #ffff;
   --color-background-input: #e9e9f7;
+  /* LANDING */
+  --color-overview: #8689d9;
+  --color-card-overview: #232363;
+  --color-letras-overview: #f4f6fb;
+  --color-hover-button-overview: #8689d9;
 }
 * {
   font-family: "Space Grotesk", sans-serif;
