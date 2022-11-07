@@ -137,6 +137,14 @@ export default function AddIncom() {
           Create!
         </button>
       </form>
+      {calendar && (
+        <Calendar
+          value={date}
+          onChange={onChangeDate}
+          className="calendar__responsive"
+          maxDate={new Date()}
+        />
+      )}
     </div>
   );
 }

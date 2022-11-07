@@ -2,28 +2,70 @@
   width: 100%;
   height: 120vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
-.Home__container__name {
-  position: relative;
-  left: -30%;
+.Home__filtros {
+  background-color: #232363;
+  width: 22%;
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-right: 0.2rem solid var(--color-card);
+}
+
+.Home__filtros__incom {
+  width: 80%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 0.2rem solid var(--color-card);
+}
+
+.Home__filtros__incom h1 {
   color: var(--color-primario);
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.Home__filtros__incom__select {
+  width: 60%;
+}
+
+.Home__filtros__expense {
+  width: 80%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 0.2rem solid var(--color-card);
+}
+
+.Home__filtros__expense h1 {
+  color: var(--color-primario);
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 .Home__box {
-  width: 80%;
+  width: 70%;
   height: 90vh;
   background-color: #232363;
   backdrop-filter: blur(7px);
   border-radius: 30px;
-  box-shadow: 2px 6px 18px #000;
+  box-shadow: 2px 6px 18px var(--color-card);
   margin-bottom: 4rem;
+  margin-right: 5rem;
 }
 .Home__box__header {
-  border-bottom: 0.1rem solid #000;
+  border-bottom: 0.1rem solid var(--color-card);
   height: 10vh;
   display: flex;
   align-items: center;
@@ -35,7 +77,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  border-right: 0.1rem solid #000;
+  border-right: 0.1rem solid var(--color-card);
   height: 100%;
 }
 
@@ -103,7 +145,7 @@
 .Home__box__info .incom {
   width: 50%;
   height: auto;
-  border-right: 0.1rem solid #000;
+  border-right: 0.1rem solid var(--color-card);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
@@ -153,9 +195,9 @@
 .Home__box__total__incom {
   width: 50%;
   height: 15vh;
-  border-right: 0.1rem solid #000;
-  border-bottom: 0.1rem solid #000;
-  border-top: 0.1rem solid #000;
+  border-right: 0.1rem solid var(--color-card);
+  border-bottom: 0.1rem solid var(--color-card);
+  border-top: 0.1rem solid var(--color-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,8 +227,8 @@
 .Home__box__total__expense {
   width: 50%;
   height: 15vh;
-  border-bottom: 0.1rem solid #000;
-  border-top: 0.1rem solid #000;
+  border-bottom: 0.1rem solid var(--color-card);
+  border-top: 0.1rem solid var(--color-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,18 +246,41 @@
 
 /* RESPONSIVE */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 490px) {
   .Home__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    width: 100%;
+  }
+  .Home__filtros {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    border-bottom: 0.2rem solid var(--color-card);
+  }
+
+  .Home__filtros__incom {
+    width: 45%;
+    border: none;
+  }
+  .Home__filtros__expense {
+    width: 45%;
+    border: none;
   }
   .Home__container__name {
     left: 0%;
   }
   .Home__box {
     width: 95%;
+    margin-top: 2rem;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .Home__Add__button {
     font-size: 0.6rem;

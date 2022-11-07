@@ -5,7 +5,8 @@
   align-items: center;
   justify-content: space-between;
   border: none;
-  background: transparent;
+  background: #232363;
+  border-bottom: 0.2rem solid var(--color-card);
 }
 
 .Header__title {
@@ -30,56 +31,28 @@
     1px 25px 35px rgba(16, 16, 16, 0.5), 1px 30px 60px rgba(16, 16, 16, 0.5);
 }
 
+.Header__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+}
+
+.Header__info h1 {
+  color: var(--color-primario);
+  margin-top: 1rem;
+}
+
 .Header__button__logout {
-  font-family: inherit;
-  display: inline-block;
-  line-height: 2.5em;
-  margin: 2rem;
-  width: 7.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.5s;
-  z-index: 1;
-  font-size: 1rem;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-  background: var(--color-background-button);
+  background: var(--color-primario);
   border: none;
-}
-
-.Header__button__logout:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color-hover-button);
-  height: 150px;
-  width: 200px;
+  padding: 0.8rem;
   border-radius: 50%;
-}
-
-.Header__button__logout:hover {
-  color: #fff;
-}
-
-.Header__button__logout:before {
-  top: 100%;
-  left: 100%;
-  transition: all 0.7s;
-}
-
-.Header__button__logout:hover:before {
-  top: -30px;
-  left: -30px;
-}
-
-.Header__button__logout:active:before {
-  background: var(--color-hover-button);
-  transition: background 0s;
+  display: flex;
 }
 /* RESPONSIVE */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 490px) {
   .Header__title img {
     width: 4rem;
     height: 4rem;
@@ -93,12 +66,25 @@
       1px 25px 35px rgba(16, 16, 16, 0.5), 1px 30px 60px rgba(16, 16, 16, 0.5);
   }
 
-  .Header__container button {
-    width: 6rem;
-    height: 3rem;
-    background: none;
+  .Header__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 13rem;
+  }
+
+  .Header__info h1 {
+    width: 12rem;
+    color: var(--color-primario);
+  }
+
+  .Header__button__logout {
+    background: var(--color-primario);
     border: none;
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
     position: relative;
-    right: 5%;
+    right: 1.5rem;
   }
 }

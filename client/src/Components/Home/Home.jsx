@@ -5,6 +5,7 @@ import { getUser } from "../../Redux/Actions";
 import { Link, useNavigate } from "react-router-dom";
 import Cards from "../Cards/Cards";
 import Cookies from "universal-cookie";
+import Form from "react-bootstrap/Form";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -45,7 +46,28 @@ export default function Home() {
 
   return (
     <div className="Home__container">
-      <h1 className="Home__container__name">Hi, {user.firstName}</h1>
+      {/* <div className="Home__filtros">
+        <div className="Home__filtros__incom">
+          <h1 className="Home__filtros__incom__title">Incom</h1>
+          <Form.Select size="sm">
+            <option>Small select</option>
+            <option>Small select</option>
+          </Form.Select>
+          <Form.Select size="sm">
+            <option>Small select</option>
+          </Form.Select>
+        </div>
+        <div className="Home__filtros__expense">
+          <h1>Expense</h1>
+          <Form.Select size="sm">
+            <option>Small select</option>
+            <option>Small select</option>
+          </Form.Select>
+          <Form.Select size="sm">
+            <option>Small select</option>
+          </Form.Select>
+        </div>
+      </div> */}
       <div className="Home__box">
         <header className="Home__box__header">
           <div className="Home__box__add">

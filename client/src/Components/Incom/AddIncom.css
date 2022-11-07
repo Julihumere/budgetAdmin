@@ -93,9 +93,23 @@
 
 /* RESPONSIVE */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 490px) {
+  .AddIncom__container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
   .AddIncom__form {
+    margin-top: 2rem;
     width: 80%;
     height: 70vh;
+  }
+  .calendar {
+    display: none;
+  }
+  .calendar__responsive {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
