@@ -2,16 +2,17 @@ const { Router } = require("express");
 const router = Router();
 const { Expense } = require("../db.js");
 const {
-  getExpense,
   postExpense,
   updateExpense,
   deleteExpense,
+  getExpenseById,
 } = require("../Controllers/ControllersExpense.js");
 
-router.get("/expenses", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
-    const allExpenses = await getExpense();
-    res.send(allExpenses);
+    const { id } = req.params;
+    const expense = await getExpenseById(id);
+    res.status(200).json(expense);
   } catch (error) {
     next(error);
   }
@@ -22,7 +23,8 @@ router.post("/creationExpense", async (req, res, next) => {
   try {
     let newExpense = await postExpense(concept, amount, category, date);
     await newExpense.addUser(email);
-    res.json(newExpense);
+    console.log(newExpense);
+    res.status(201).send("Expense created!");
   } catch (error) {
     next(error);
   }
@@ -32,7 +34,7 @@ router.put("/updateExpense", async (req, res, next) => {
   const { id, concept, amount, category } = req.body;
   try {
     let expenseUpdated = await updateExpense(id, concept, amount, category);
-    res.send(expenseUpdated);
+    res.status(200).send("Expense update");
   } catch (error) {
     next(error);
   }
@@ -43,7 +45,7 @@ router.delete("/deleteExpense", async (req, res, next) => {
   try {
     let expenseDeleted = await deleteExpense(id);
     await expenseDeleted.destroy();
-    res.send(expenseDeleted);
+    res.status(200).send("Expense deleted");
   } catch (error) {
     next(error);
   }

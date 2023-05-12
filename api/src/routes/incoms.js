@@ -1,49 +1,54 @@
 const { Router } = require("express");
 const router = Router();
-const { Incom, User } = require("../db.js");
 const {
-  getIncoms,
   postIncoms,
   updateIncoms,
   deleteIncoms,
+  getIncomById,
 } = require("../Controllers/ControllerIncom.js");
 
-router.get("/incoms", async (req, res, next) => {
+
+
+router.get('/:id', async(req, res, next)=>{
   try {
-    const allIncoms = await getIncoms();
-    res.send(allIncoms);
+    const {id} = req.params
+    const incom = await getIncomById(id)
+    res.status(200).json(incom)
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
 
 router.post("/creationIncom", async (req, res, next) => {
   const { concept, amount, type, category, email, date } = req.body;
   try {
     let newIncom = await postIncoms(concept, amount, category, date);
     await newIncom.addUser(email);
-    res.json(newIncom);
+    res.status(201).send("Incom created!");
   } catch (error) {
     next(error);
   }
 });
 
-router.put("/updateIncom", async (req, res, next) => {
-  const { id, concept, amount, category } = req.body;
+router.put("/updateIncom/:id", async (req, res, next) => {
+  const { id } = req.params
+  const { concept, amount, category } = req.body;
   try {
     let incomUpdated = await updateIncoms(id, concept, amount, category);
-    res.send(incomUpdated);
+    res.status(200).send("Incom updated!");
   } catch (error) {
     next(error);
   }
 });
 
-router.delete("/deleteIncom", async (req, res, next) => {
-  const { id } = req.body;
+
+
+router.delete("/deleteIncom/:id", async (req, res, next) => {
+  const { id } = req.params;
   try {
     let incomDeleted = await deleteIncoms(id);
     await incomDeleted.destroy();
-    res.send(incomDeleted);
+    res.status(200).send("Incom deleted!");
   } catch (error) {
     next(error);
   }

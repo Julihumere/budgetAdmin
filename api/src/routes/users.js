@@ -50,7 +50,6 @@ router.post("/auth", async (req, res, next) => {
       res.send("User not found");
     } else {
       const checkPassword = await compare(password, user.password);
-      console.log("CHECK", checkPassword);
       if (checkPassword || !checkPassword) {
         if (checkPassword === true) {
           res.send("User has started session");

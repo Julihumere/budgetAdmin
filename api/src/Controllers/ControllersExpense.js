@@ -1,10 +1,12 @@
 const { Expense } = require("../db.js");
 
-//Controller GetExpense.
-const getExpense = async () => {
-  const allExpenses = await Expense.findAll();
-  return allExpenses;
-};
+//Controller GetExpenseById
+const getExpenseById = async (id) => {
+  const expense = await Expense.findByPk(id)
+  console.log(expense)
+  return expense
+}
+
 
 //Controller PostExpense.
 const postExpense = async (concept, amount, category, date) => {
@@ -22,16 +24,16 @@ const postExpense = async (concept, amount, category, date) => {
 const updateExpense = async (id, concept, amount, category) => {
   let expenseUpdated = await Expense.findByPk(id);
   if (concept) {
-    expenseUpdated.update({ concept: concept });
-    expenseUpdated.save();
+    await expenseUpdated.update({ concept: concept });
+    await expenseUpdated.save();
   }
   if (amount) {
-    expenseUpdated.update({ amount: amount });
-    expenseUpdated.save();
+    await expenseUpdated.update({ amount: amount });
+    await expenseUpdated.save();
   }
   if (category) {
-    expenseUpdated.update({ category: category });
-    expenseUpdated.save();
+    await expenseUpdated.update({ category: category });
+    await expenseUpdated.save();
   }
   return expenseUpdated;
 };
@@ -43,7 +45,7 @@ const deleteExpense = async (id) => {
 };
 
 module.exports = {
-  getExpense,
+  getExpenseById,
   postExpense,
   updateExpense,
   deleteExpense,

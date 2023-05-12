@@ -35,6 +35,8 @@ const postUsers = async (firstName, lastName, email, password) => {
       password: passwordHash,
     },
   });
+
+  console.log(newUser);
   return newUser;
 };
 
