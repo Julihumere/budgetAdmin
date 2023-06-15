@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const router = Router();
+const expenseRoutes = Router();
 const { Expense } = require("../db.js");
 const {
   postExpense,
@@ -8,7 +8,7 @@ const {
   getExpenseById,
 } = require("../Controllers/ControllersExpense.js");
 
-router.get("/:id", async (req, res, next) => {
+expenseRoutes.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const expense = await getExpenseById(id);
@@ -18,7 +18,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/creationExpense", async (req, res, next) => {
+expenseRoutes.post("/creationExpense", async (req, res, next) => {
   const { concept, amount, category, email, date } = req.body;
   try {
     let newExpense = await postExpense(concept, amount, category, date);
@@ -30,7 +30,7 @@ router.post("/creationExpense", async (req, res, next) => {
   }
 });
 
-router.put("/updateExpense", async (req, res, next) => {
+expenseRoutes.put("/updateExpense", async (req, res, next) => {
   const { id, concept, amount, category } = req.body;
   try {
     let expenseUpdated = await updateExpense(id, concept, amount, category);
@@ -40,7 +40,7 @@ router.put("/updateExpense", async (req, res, next) => {
   }
 });
 
-router.delete("/deleteExpense", async (req, res, next) => {
+expenseRoutes.delete("/deleteExpense", async (req, res, next) => {
   const { id } = req.body;
   try {
     let expenseDeleted = await deleteExpense(id);
@@ -51,4 +51,4 @@ router.delete("/deleteExpense", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+module.exports = expenseRoutes;

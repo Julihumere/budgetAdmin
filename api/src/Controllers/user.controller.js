@@ -1,18 +1,17 @@
 const { User, Incom, Expense } = require("../db.js");
 const { Op } = require("sequelize");
 const bcrypt = require("bcryptjs");
+const userServices = require("../services/user.service");
 
 // Controller GetUsers.
-const getUsers = async () => {
-  const allUsers = await User.findAll({
-    include: [
-      { model: Incom, through: { attributes: [] } },
-      { model: Expense, through: { attributes: [] } },
-    ],
-  });
-  return allUsers;
+const getUsers = async (req, res, next) => {
+  const users = await userServices.getUsers();
+  if (users) {
+    return res.status(200).json(users);
+  } else {
+    return res.status(400).json({ message: "NO_USERS" });
+  }
 };
-
 //Controller GetUser.
 const getUser = async (email) => {
   const user = await User.findByPk(email, {
@@ -22,22 +21,6 @@ const getUser = async (email) => {
     ],
   });
   return user;
-};
-
-// Controller PostUsers.
-const postUsers = async (firstName, lastName, email, password) => {
-  const passwordHash = await encrypt(password);
-  const newUser = await User.findOrCreate({
-    where: {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: passwordHash,
-    },
-  });
-
-  console.log(newUser);
-  return newUser;
 };
 
 // Controller Authentication User.
@@ -94,7 +77,6 @@ const compare = async (passwordPlain, hashPassword) => {
 module.exports = {
   getUsers,
   getUser,
-  postUsers,
   authentication,
   login,
   logout,

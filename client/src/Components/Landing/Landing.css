@@ -5,9 +5,10 @@
 
 .Landing__container {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   justify-content: center;
+  background: var(--color-background);
 }
 
 .Landing__overview {
@@ -16,8 +17,9 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 4rem;
-  background-color: var(--color-overview);
-  border-radius: 20px;
+  border-radius: 50px;
+  background: var(--color-cards);
+  box-shadow: 27px 27px 53px #b4b4b4, -27px -27px 53px #eeeeee;
 }
 
 .img {
@@ -28,12 +30,14 @@
   width: 40%;
   position: relative;
   left: 2%;
+  background: var(--color-cards);
 }
 
 .img h1 {
   font-weight: 900;
-  color: var(--color-letras-overview);
-  text-shadow: 1px 2px 3px #2e2ef9;
+  color: var(--color-text-button);
+  text-shadow: -10px -10px 30px var(--color-light),
+    10px 10px 30px var(--color-dark);
   font-size: 2rem;
 }
 
@@ -41,14 +45,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 50%;
   height: 100%;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
-  background: var(--color-card-overview);
   position: relative;
   left: 4%;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  background: var(--color-cards);
 }
 
 .Landing__card div {
@@ -59,51 +65,33 @@
 
 .Landing__card h1 {
   font-weight: 900;
-  color: var(--color-letras-overview);
-  text-shadow: 1px 2px 3px #7878bd;
+  color: var(--color-title);
+  text-shadow: -10px -10px 30px var(--color-light),
+    10px 10px 30px var(--color-dark);
   font-size: 2rem;
 }
 
 .Landing__card h4 {
-  color: var(--color-letras-overview);
+  color: var(--color-text-button);
+  text-shadow: -10px -10px 30px var(--color-light),
+    10px 10px 30px var(--color-dark);
   font-size: 1rem;
 }
 .Landing__button {
-  padding: 15px 25px;
-  border: none;
-  border-radius: 15px;
-  color: var(--color-letras);
-  z-index: 1;
-  background: var(--color-background-button);
-  position: relative;
-  font-weight: 1000;
-  font-size: 15px;
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-  overflow: hidden;
+  height: 60px;
+  padding: 0 30px;
+  border-radius: 98px;
+  border: transparent solid 3px;
+  font-size: 18px;
+  background: var(--color-primary-button);
+  color: var(--color-text-button);
+  box-shadow: var(--boxShadow);
 }
 
-.Landing__button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: var(--color-hover-button-overview);
-  z-index: -1;
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-}
-
-.Landing__button:hover {
-  color: #fff;
-  cursor: pointer;
-}
-
-.Landing__button:hover::before {
-  width: 100%;
+.Landing__button:active {
+  transition: 100ms ease-in-out;
+  border: var(--color-primary-button) solid 3px;
+  box-shadow: var(--button-press);
 }
 
 /* RESPONSIVE */

@@ -8,11 +8,11 @@
 }
 
 .AddIncom__form {
-  width: 35%;
+  width: 25%;
   height: 80%;
-  background-color: var(--color-card);
-  border-radius: 20px;
-  border: 0.1rem solid #fff;
+  background-color: var(--color-cards);
+  box-shadow: var(--boxShadow);
+  border-radius: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,22 +25,27 @@
 }
 
 .AddIncom__form label {
-  color: var(--color-letras);
+  color: var(--color-letras-black);
   font-size: 1.3rem;
   font-weight: 800;
 }
 
 .AddIncom__form input {
-  border: none;
-  border-radius: 10px;
+  border-radius: 50px;
+  background: var(--color-primary-button);
+  box-shadow: var(--boxShadow);
+  padding: 0.5rem 1rem;
   width: 100%;
-  height: 2rem;
+  color: var(--color-letras-black);
+  border: none;
+}
+
+.AddIncom__form input:focus {
+  outline: transparent;
 }
 
 .calendar {
   position: absolute;
-  left: 70%;
-  bottom: 10%;
   z-index: 10;
   width: 25%;
   height: auto;
@@ -48,50 +53,68 @@
   border: none;
 }
 .AddIncom__form p {
-  color: rgb(133, 0, 0);
+  color: red;
   margin-bottom: -1rem;
   margin-top: 0.2rem;
 }
 
 .AddIncom__form .AddIncom__button_submit {
-  padding: 0.5rem 1rem;
-  border: unset;
-  border-radius: 10px;
-  color: var(--color-letras);
-  z-index: 1;
-  background: var(--color-background-button);
-  position: relative;
-  font-weight: 1000;
-  font-size: 1rem;
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-  overflow: hidden;
+  margin-top: 1rem;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 98px;
+  border: transparent solid 3px;
+  font-size: 18px;
+  background: var(--color-primary-button);
+  color: var(--color-text-button);
+  box-shadow: var(--boxShadow);
 }
 
-.AddIncom__form .AddIncom__button_submit::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 10px;
-  background-color: var(--color-hover-button);
-  z-index: -1;
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
+.AddIncom__form .AddIncom__button_submit:active {
+  transition: 100ms ease-in-out;
+  border: var(--color-primary-button) solid 3px;
+  box-shadow: var(--button-press);
 }
 
-.AddIncom__form .AddIncom__button_submit:hover {
-  color: #fff;
-  cursor: pointer;
-}
-
-.AddIncom__form .AddIncom__button_submit:hover::before {
-  width: 100%;
+.calendar__responsive {
+  display: none;
 }
 
 /* RESPONSIVE */
+
+@media screen and (max-width: 1100px) {
+  .AddIncom__container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .AddIncom__form {
+    margin-top: 2rem;
+    height: 70vh;
+  }
+  .calendar__responsive {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .calendar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .AddIncom__form {
+    width: 50%;
+  }
+  .calendar__responsive {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .calendar {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 490px) {
   .AddIncom__container {

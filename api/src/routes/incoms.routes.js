@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const router = Router();
+const incomRoutes = Router();
 const {
   postIncoms,
   updateIncoms,
@@ -7,19 +7,17 @@ const {
   getIncomById,
 } = require("../Controllers/ControllerIncom.js");
 
-
-
-router.get('/:id', async(req, res, next)=>{
+incomRoutes.get("/:id", async (req, res, next) => {
   try {
-    const {id} = req.params
-    const incom = await getIncomById(id)
-    res.status(200).json(incom)
+    const { id } = req.params;
+    const incom = await getIncomById(id);
+    res.status(200).json(incom);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-router.post("/creationIncom", async (req, res, next) => {
+incomRoutes.post("/creationIncom", async (req, res, next) => {
   const { concept, amount, type, category, email, date } = req.body;
   try {
     let newIncom = await postIncoms(concept, amount, category, date);
@@ -30,8 +28,8 @@ router.post("/creationIncom", async (req, res, next) => {
   }
 });
 
-router.put("/updateIncom/:id", async (req, res, next) => {
-  const { id } = req.params
+incomRoutes.put("/updateIncom/:id", async (req, res, next) => {
+  const { id } = req.params;
   const { concept, amount, category } = req.body;
   try {
     let incomUpdated = await updateIncoms(id, concept, amount, category);
@@ -41,9 +39,7 @@ router.put("/updateIncom/:id", async (req, res, next) => {
   }
 });
 
-
-
-router.delete("/deleteIncom/:id", async (req, res, next) => {
+incomRoutes.delete("/deleteIncom/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     let incomDeleted = await deleteIncoms(id);
@@ -54,4 +50,4 @@ router.delete("/deleteIncom/:id", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+module.exports = incomRoutes;

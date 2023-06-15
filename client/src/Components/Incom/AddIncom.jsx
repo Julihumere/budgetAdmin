@@ -135,16 +135,16 @@ export default function AddIncom() {
         </div>
         <button className="AddIncom__button_submit" type="submit">
           Create!
-        </button>
+        </button>     
       </form>
       {calendar && (
-        <Calendar
-          value={date}
-          onChange={onChangeDate}
-          className="calendar__responsive"
-          maxDate={new Date()}
-        />
-      )}
+            <Calendar
+              value={date}
+              onChange={onChangeDate}
+              className="calendar__responsive"
+              maxDate={new Date()}
+            />
+          )}
     </div>
   );
 }

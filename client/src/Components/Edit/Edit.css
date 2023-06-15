@@ -1,68 +1,57 @@
-.Login__container {
+.Edit__container {
   width: 100%;
-  height: 85vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-background);
 }
 
-.Login__card {
-  width: 30%;
+.Edit__form {
+  width: 25%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   min-height: auto;
+  border-radius: 20px;
   background: var(--color-cards);
   box-shadow: var(--boxShadow);
-  border-radius: 20px;
   border: 1px solid white;
+  margin-top: 5rem;
 }
 
-.Login__form {
-  padding: 1.5rem;
-}
-
-.Login__card_header {
+.Edit__label_input {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
-.Login__form_heading {
-  padding-bottom: 1.25rem;
-  font-size: 2rem;
+.Edit__form label {
   color: var(--color-letras-black);
+  font-size: 1.3rem;
+  font-weight: 800;
 }
 
-.Login__field {
-  padding-bottom: 0.6rem;
-  width: 100%;
-}
-
-.Login__input {
+.Edit__form input {
   border-radius: 50px;
   background: var(--color-primary-button);
   box-shadow: var(--boxShadow);
-  padding: 0.3rem;
+  padding: 0.5rem 1rem;
   width: 100%;
   color: var(--color-letras-black);
   border: var(--color-primary-button);
 }
 
-.Login__input:focus-visible {
+.Edit__form input:focus {
   outline: transparent;
 }
 
-.Login__input::placeholder {
+.Edit__form input::placeholder {
   color: var(--color-letras-black);
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
-.Login__field label {
-  color: var(--color-letras-black);
-  font-size: 0.9rem;
-  display: block;
-  padding-bottom: 0.3rem;
-}
-
-.Login__button {
+.Edit__form .Edit__button_submit {
   margin-top: 1rem;
   height: 40px;
   padding: 0 20px;
@@ -74,16 +63,8 @@
   box-shadow: var(--boxShadow);
 }
 
-.Login__button:active {
+.Edit__form .Edit__button_submit:active {
   transition: 100ms ease-in-out;
   border: var(--color-primary-button) solid 3px;
   box-shadow: var(--button-press);
-}
-
-/* RESPONSIVE */
-
-@media screen and (max-width: 490px) {
-  .Login__card {
-    width: 80%;
-  }
 }

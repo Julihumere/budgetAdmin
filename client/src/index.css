@@ -2,25 +2,54 @@
 
 :root {
   --color-primario: #f4f6fb;
-  --color-letras: #232363;
+  --color-letras: #fff;
+  --color-letras-black: #4b4b4b;
   --color-hover-button: #560bad;
-  --color-card: #8689d9;
-  --color-background-button: #ffff;
+  --color-card: linear-gradient(
+    90deg,
+    rgba(182, 195, 255, 0.59156162464986) 0%,
+    rgba(87, 78, 255, 0.5775560224089635) 51%,
+    rgba(15, 0, 187, 0.5775560224089635) 100%
+  );
+  --color-background-button: midnightblue;
   --color-background-input: #e9e9f7;
+  --color-border: #232363;
+  --color-boxShadow: #000;
   /* LANDING */
   --color-overview: #8689d9;
   --color-card-overview: #232363;
   --color-letras-overview: #f4f6fb;
   --color-hover-button-overview: #8689d9;
+
+  /* Neumorphism */
+
+  --color-title: #728ab7;
+  --color-background: #efefef;
+  --color-cards: #f0f0f3;
+  --color-boxShadow-1: #bebebe;
+  --color-boxShadow-2: #ffffff;
+
+  --color-primary-button: #f0f0f3;
+  --color-text-button: #808b9f;
+  --color-light: #ffffff;
+  --color-dark: rgba(174, 174, 192, 0.4);
+
+  --boxShadow: -10px -10px 30px var(--color-light),
+    10px 10px 30px var(--color-dark);
+  --button-press: -10px -10px 30px var(--color-light),
+    10px 10px 30px var(--color-dark), inset -3px -3px 10px var(--color-light),
+    inset 3px 3px 10px var(--color-dark);
 }
+
 * {
   font-family: "Space Grotesk", sans-serif;
 }
 body {
   margin: 0;
-  background-image: url("../src/img/backgroundPage.jpg");
-  background-size: cover;
-  background-attachment: local;
+}
+
+body:focus {
+  outline: none;
 }
 
 a:link,
@@ -33,8 +62,8 @@ a:active {
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #9e07ea;
+  background: var(--color-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a0ca3;
+  background: var(--color-light);
 }

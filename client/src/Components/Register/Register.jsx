@@ -55,8 +55,10 @@ export default function Register() {
         confirmButtonText: "Ok",
       });
     } else {
-      dispatch(postUsers(user));
-      navigate("/login");
+      setTimeout(() => {
+        dispatch(postUsers(user));
+        navigate("/login");
+      }, 3000);
     }
   };
 

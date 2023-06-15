@@ -72,7 +72,7 @@ export default function Login() {
           <input
             class="Login__input"
             type="text"
-            placeholder="Email"
+            placeholder="user@example.com"
             id="email"
             name="email"
             value={user.email}
@@ -85,7 +85,7 @@ export default function Login() {
           <input
             class="Login__input"
             type="password"
-            placeholder="Password"
+            placeholder="*******"
             id="password"
             name="password"
             value={user.password}

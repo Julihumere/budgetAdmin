@@ -1,9 +1,9 @@
 .Home__container {
   width: 100%;
-  height: 120vh;
+  height: 85vh;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 }
 
 .Home__filtros {
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-right: 0.2rem solid var(--color-card);
+  border-right: 0.2rem solid var(--color-border);
 }
 
 .Home__filtros__incom {
@@ -23,7 +23,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 0.2rem solid var(--color-card);
+  border-bottom: 0.2rem solid var(--color-border);
 }
 
 .Home__filtros__incom h1 {
@@ -44,7 +44,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 0.2rem solid var(--color-card);
+  border-bottom: 0.2rem solid var(--color-border);
 }
 
 .Home__filtros__expense h1 {
@@ -55,259 +55,72 @@
 }
 
 .Home__box {
-  width: 70%;
-  height: 90vh;
-  background-color: #232363;
-  backdrop-filter: blur(7px);
-  border-radius: 30px;
-  box-shadow: 2px 6px 18px var(--color-card);
-  margin-bottom: 4rem;
-  margin-right: 5rem;
-}
-.Home__box__header {
-  border-bottom: 0.1rem solid var(--color-card);
-  height: 10vh;
+  width: 95%;
+  height: 90%;
+  background-image: var(--color-background);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
-.Home__box__add {
-  width: 50%;
+.info_user {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  border-right: 0.1rem solid var(--color-card);
+  padding: 15px;
+  box-shadow: var(--boxShadow);
+}
+
+.info_user > h2 {
+  font-size: 20px;
+  color: var(--color-title);
+}
+
+.cards {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.container_item {
+  margin-top: 1rem;
+  width: 45%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  box-shadow: var(--boxShadow);
 }
 
-.Home__Add__button {
-  font-family: inherit;
-  display: inline-block;
-  line-height: 2.5em;
-  margin: 2rem;
-  width: 7.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.5s;
-  z-index: 1;
-  font-size: 1rem;
-  border-radius: 6px;
-  font-weight: 700;
-  cursor: pointer;
-  background: var(--color-background-button);
-  border: none;
-}
-
-.Home__Add__button:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color-hover-button);
-  height: 150px;
-  width: 200px;
-  border-radius: 50%;
-}
-
-.Home__Add__button:hover {
-  color: #fff;
-}
-
-.Home__Add__button:before {
-  top: 100%;
-  left: 100%;
-  transition: all 0.7s;
-}
-
-.Home__Add__button:hover:before {
-  top: -30px;
-  left: -30px;
-}
-
-.Home__Add__button:active:before {
-  background: #3a0ca3;
-  transition: background 0s;
-}
-
-.Home__box__filter {
-  width: 50%;
+.addItem {
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-top: 2rem;
 }
 
-.Home__box__info {
-  width: 100%;
-  height: 50vh;
-  display: flex;
+.addItem > h1 {
+  font-size: 24px;
+  color: rgb(112, 112, 255);
+  margin: 0;
 }
 
-.Home__box__info .incom {
+.iconAdd {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.container_expenses {
   width: 50%;
-  height: auto;
-  border-right: 0.1rem solid var(--color-card);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  justify-items: center;
-  overflow-y: scroll;
-}
-.incom::-webkit-scrollbar {
-  width: 5px;
-}
-
-.incom::-webkit-scrollbar-track {
-  background: #9e07ea;
-}
-
-.incom::-webkit-scrollbar-thumb {
-  background: #3a0ca3;
-}
-
-.Home__box__info .expense {
-  width: 50%;
-  height: auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  justify-items: center;
-  overflow-y: scroll;
-}
-
-.expense::-webkit-scrollbar {
-  width: 5px;
-}
-
-.expense::-webkit-scrollbar-track {
-  background: #9e07ea;
-}
-
-.expense::-webkit-scrollbar-thumb {
-  background: #3a0ca3;
-}
-
-.Home__box__footer {
-  width: 100%;
-  height: 15vh;
+  height: 100%;
   display: flex;
-}
-
-.Home__box__total__incom {
-  width: 50%;
-  height: 15vh;
-  border-right: 0.1rem solid var(--color-card);
-  border-bottom: 0.1rem solid var(--color-card);
-  border-top: 0.1rem solid var(--color-card);
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-.Home__box__total__incom h1 {
-  color: var(--color-primario);
-  font-size: 1.6rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.Home__box__total__expense h1 {
-  color: var(--color-primario);
-  font-size: 1.6rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.Home__box__total__balance h1 {
-  color: #fff;
-  font-size: 2rem;
-  text-transform: uppercase;
-}
-
-.Home__box__total__expense {
-  width: 50%;
-  height: 15vh;
-  border-bottom: 0.1rem solid var(--color-card);
-  border-top: 0.1rem solid var(--color-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-.Home__box__total__balance {
-  width: 100%;
-  height: 15vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-/* RESPONSIVE */
-
-@media screen and (max-width: 490px) {
-  .Home__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-  }
-  .Home__filtros {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    border-bottom: 0.2rem solid var(--color-card);
-  }
-
-  .Home__filtros__incom {
-    width: 45%;
-    border: none;
-  }
-  .Home__filtros__expense {
-    width: 45%;
-    border: none;
-  }
-  .Home__container__name {
-    left: 0%;
-  }
-  .Home__box {
-    width: 95%;
-    margin-top: 2rem;
-    margin-right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .Home__Add__button {
-    font-size: 0.6rem;
-    width: 5rem;
-  }
-
-  .Home__box__info .incom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .Home__box__info .expense {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .Home__box__total__incom h1 {
-    font-size: 1rem;
-  }
-  .Home__box__total__expense h1 {
-    font-size: 1rem;
-  }
-  .Home__box__total__balance h1 {
-    font-size: 1rem;
-  }
+  justify-content: space-evenly;
 }

@@ -6,6 +6,7 @@ import Register from "./Components/Register/Register.jsx";
 import AddIncom from "./Components/Incom/AddIncom.jsx";
 import AddExpense from "./Components/Expense/AddExpense.jsx";
 import { Route, Routes } from "react-router-dom";
+import Edit from "./Components/Edit/Edit";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/addIncom" element={<AddIncom />} />
         <Route path="/addExpense" element={<AddExpense />} />
+        <Route path="/edit/:id" element={<Edit />} />
       </Routes>
     </>
   );

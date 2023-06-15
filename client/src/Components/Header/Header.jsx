@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../Redux/Actions";
 import logo from "../../img/Coin flip.gif";
-import { GrLogout } from "react-icons/gr";
+import { AiOutlineLogout } from "react-icons/ai";
 import Cookies from "universal-cookie";
 import { logOut } from "./../../Redux/Actions";
 
@@ -27,7 +27,6 @@ export default function Header() {
     cookies.remove("email");
     navigate("/");
   };
-  console.log(email);
   return (
     <div className="Header__container">
       <div className="Header__title">
@@ -45,7 +44,7 @@ export default function Header() {
           <>
             <h1>Hi, {name.firstName}</h1>
             <button onClick={handleLogOut} className="Header__button__logout">
-              <GrLogout />
+              <AiOutlineLogout size="2em" color="#fff" />
             </button>
           </>
         ) : null}

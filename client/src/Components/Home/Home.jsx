@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../Redux/Actions";
 import { Link, useNavigate } from "react-router-dom";
 import Cards from "../Cards/Cards";
 import Cookies from "universal-cookie";
-import Form from "react-bootstrap/Form";
+import deleteIcon from "../../img/borrar.png";
+import editIcon from "../../img/editar.png";
+import add from "../../img/add.png";
+import Loading from "../Loading/Loading";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -14,14 +17,17 @@ export default function Home() {
   const cookieEmail = cookies.get("email");
   const user = useSelector((state) => state.user);
   const incoms = user.incoms && user.incoms;
-  const expenses = user.incoms && user.expenses;
+  const expenses = user.expenses && user.expenses;
+  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
     dispatch(getUser(cookieEmail));
     if (cookies.get("email") !== cookieEmail) {
       navigate("/login");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Total Incom
@@ -69,24 +75,25 @@ export default function Home() {
         </div>
       </div> */}
       <div className="Home__box">
-        <header className="Home__box__header">
-          <div className="Home__box__add">
-            <Link to={"/addIncom"}>
-              <button className="Home__Add__button">Add Incom</button>
-            </Link>
-          </div>
-          <div className="Home__box__filter">
-            <Link to={"/addExpense"}>
-              <button className="Home__Add__button">Add Expense</button>
-            </Link>
-          </div>
-        </header>
-        <div className="Home__box__info">
-          <div className="incom">
-            {incoms &&
-              incoms.map((e) => (
+        <section className="info_user">
+          <h2>Incoms: ${totalIncom}</h2>
+          <h2>Expenses: ${totalExpense}</h2>
+          <h2>Balance: ${totalBalance}</h2>
+        </section>
+        {loading ? (
+          <Loading />
+        ) : (
+          <section className="cards">
+            {/* INCOMS */}
+            <div className="container_item">
+              <div className="addItem">
+                <h1>Add Incom</h1>
+                <Link to="/addIncom">
+                  <img src={add} className="iconAdd" />
+                </Link>
+              </div>
+              {user.incoms?.map((e) => (
                 <Cards
-                  key={e.id}
                   id={e.id}
                   concept={e.concept}
                   category={e.category}
@@ -95,34 +102,29 @@ export default function Home() {
                   type={e.type}
                 />
               ))}
-          </div>
-          <div className="expense">
-            {expenses &&
-              expenses.map((e) => (
-                <Cards
-                  key={e.id}
-                  id={e.id}
-                  concept={e.concept}
-                  category={e.category}
-                  amount={e.amount}
-                  date={e.date}
-                  type={e.type}
-                />
-              ))}
-          </div>
-        </div>
+            </div>
 
-        <footer className="Home__box__footer">
-          <div className="Home__box__total__incom">
-            <h1>Total Incom: ${totalIncom}</h1>
-          </div>
-          <div className="Home__box__total__expense">
-            <h1>Total Expense: ${totalExpense}</h1>
-          </div>
-        </footer>
-        <div className="Home__box__total__balance">
-          <h1>Balance: ${totalBalance}</h1>
-        </div>
+            {/* EXPENSE */}
+            <div className="container_item">
+              <div className="addItem">
+                <h1>Add Expense</h1>
+                <Link to="/addExpense">
+                  <img src={add} className="iconAdd" />
+                </Link>
+              </div>
+              {user.expenses?.map((e) => (
+                <Cards
+                  id={e.id}
+                  concept={e.concept}
+                  category={e.category}
+                  amount={e.amount}
+                  date={e.date}
+                  type={e.type}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   );

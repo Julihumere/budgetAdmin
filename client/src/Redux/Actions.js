@@ -1,20 +1,21 @@
 import axios from "axios";
 export const GET_USER = "GET_USER";
-export const GET_INCOMS = "GET_INCOMS";
-export const GET_EXPENSES = "GET_EXPENSES";
+export const GET_ALL_INCOMS = "GET_ALL_INCOMS";
+export const GET_INCOM = "GET_INCOM";
+export const GET_EXPENSE = "GET_EXPENSE";
 export const GET_BALANCE = "GET_BALANCE";
 export const POST_USER = "POST_USER";
 export const POST_INCOM = "POST_INCOM";
 export const POST_EXPENSE = "POST_EXPENSE";
 export const PUT_UPDATE_INCOM = "PUT_UPDATE_INCOM";
 export const PUT_UPDATE_EXPENSE = "PUT_UPDATE_EXPENSE";
-export const DELETE_INCOMS = "DELETE_INCOMS";
-export const DELETE_EXPENSE = "DELETE_EXPENSE";
+export const DELETE = "DELETE";
 export const ACCESS = "ACCESS";
 export const DENIED = "DENIED";
 export const LOGOUT = "LOGOUT";
 
-const URL = "http://localhost:3001";
+// const URL = `${process.env.REACT_APP_URL}`;
+const URL = "https://budgetadmin-o5dk.onrender.com";
 
 //Get user
 export const getUser = (email) => (dispatch) => {
@@ -29,14 +30,15 @@ export const getUser = (email) => (dispatch) => {
       });
     });
   } catch (error) {
-    console.log("getUser", error);
+    console.log("getUser", "ERROR");
   }
 };
 
 //Post Users
-export const postUsers = (payload) => (dispatch) => {
+export const postUsers = (payload) => async (dispatch) => {
+  console.log(payload);
   try {
-    axios({
+    const response = await axios({
       method: "post",
       url: `${URL}/user/creationUser`,
       data: {
@@ -46,8 +48,27 @@ export const postUsers = (payload) => (dispatch) => {
         password: payload.password,
       },
     });
+    console.log(response);
+    return response;
   } catch (error) {
     console.log("postUser", error);
+  }
+};
+
+// Incom
+export const getIncom = (id) => (dispatch) => {
+  try {
+    axios({
+      method: "get",
+      url: `${URL}/incom/${id}`,
+    }).then((res) => {
+      dispatch({
+        type: GET_INCOM,
+        payload: res.data,
+      });
+    });
+  } catch (error) {
+    console.log("ERROR");
   }
 };
 
@@ -66,16 +87,17 @@ export const addIncom = (payload) => () => {
       },
     });
   } catch (error) {
-    console.log("addIncom", error);
+    console.log("addIncom", "ERROR");
   }
 };
 
 //Edit Incom
 export const editIncom = (payload) => () => {
+  console.log(editIncom);
   try {
     axios({
       method: "put",
-      url: `${URL}/incom/updateIncom`,
+      url: `${URL}/incom/updateIncom/${payload.id}`,
       data: {
         id: payload.id,
         concept: payload.concept,
@@ -84,22 +106,39 @@ export const editIncom = (payload) => () => {
       },
     });
   } catch (error) {
-    console.log("editIncom", error);
+    console.log("editIncom", "ERROR");
   }
 };
 
 //Delete Incom
-export const deleteIncom = (payload) => () => {
+export const deleteIncom = (payload) => (dispatch) => {
   try {
     axios({
       method: "delete",
-      url: `${URL}/incom/deleteIncom`,
+      url: `${URL}/incom/deleteIncom/${payload}`,
       data: {
         id: payload,
       },
     });
   } catch (error) {
-    console.log("deleteIncom", error);
+    console.log("deleteIncom", "ERROR");
+  }
+};
+
+// Expense
+export const getExpense = (id) => (dispatch) => {
+  try {
+    axios({
+      method: "get",
+      url: `${URL}/expense/${id}`,
+    }).then((res) => {
+      dispatch({
+        type: GET_EXPENSE,
+        payload: res.data,
+      });
+    });
+  } catch (error) {
+    console.log("ERROR");
   }
 };
 
@@ -118,7 +157,7 @@ export const addExpense = (payload) => () => {
       },
     });
   } catch (error) {
-    console.log("addExpense", error);
+    console.log("addExpense", "ERROR");
   }
 };
 
@@ -136,12 +175,13 @@ export const editExpense = (payload) => () => {
       },
     });
   } catch (error) {
-    console.log("editExpense", error);
+    console.log("editExpense", "ERROR");
   }
 };
 
 //Delete Expense
 export const deleteExpense = (payload) => () => {
+  console.log(payload);
   try {
     axios({
       method: "delete",
@@ -151,7 +191,7 @@ export const deleteExpense = (payload) => () => {
       },
     });
   } catch (error) {
-    console.log("deleteExpense", error);
+    console.log("deleteExpense", "ERROR");
   }
 };
 
@@ -192,7 +232,7 @@ export const auth = (payload) => (dispatch) => {
         });
       });
   } catch (error) {
-    console.log(error);
+    console.log("ERROR");
   }
 };
 
@@ -207,7 +247,7 @@ export const logIn = (payload) => () => {
       },
     });
   } catch (error) {
-    console.log(error);
+    console.log("ERROR");
   }
 };
 
@@ -226,6 +266,6 @@ export const logOut = (payload) => (dispatch) => {
       });
     });
   } catch (error) {
-    console.log(error);
+    console.log("ERROR");
   }
 };
