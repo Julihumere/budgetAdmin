@@ -1,9 +1,8 @@
-const { compare } = require("bcryptjs");
 const { User } = require("../db.js");
 const { generateToken } = require("../utils/generateToken");
-const { encrypt } = require("../utils/hashPassword");
+const { encrypt, compare } = require("../utils/hashPassword");
 
-const registerService = async (firstName, lastName, email, password) => {
+const register = async (firstName, lastName, email, password) => {
   const passwordHash = await encrypt(password);
   const newUser = await User.findOrCreate({
     where: {
@@ -18,7 +17,12 @@ const registerService = async (firstName, lastName, email, password) => {
 };
 
 const login = async (email, password) => {
-  const compare = await compare(password);
+  const user = await User.findByPk(email);
+  const comparePassword = await compare(password, user.password);
+  if (!user) throw new Error("Invalid email");
+  if (comparePassword === false) throw new Error("Invalid password");
+
+  return { user, token: generateToken(user) };
 };
 
-module.exports = { registerService };
+module.exports = { register, login };

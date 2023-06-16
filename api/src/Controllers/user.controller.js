@@ -13,14 +13,18 @@ const getUsers = async (req, res, next) => {
   }
 };
 //Controller GetUser.
-const getUser = async (email) => {
-  const user = await User.findByPk(email, {
-    include: [
-      { model: Incom, through: { attributes: [] } },
-      { model: Expense, through: { attributes: [] } },
-    ],
-  });
-  return user;
+const getUser = async (req, res, next) => {
+  const { email } = req.params;
+  try {
+    const user = await userServices.getUser(email);
+    if (user) {
+      return res.status(200).json(user);
+    } else {
+      return res.status(400).json({ message: "NO_USER" });
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 // Controller Authentication User.

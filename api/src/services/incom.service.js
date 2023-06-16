@@ -1,15 +1,7 @@
 const { Incom } = require("../db.js");
 
-
-//Controller GetIncomById
-
-const getIncomById = async (id) => {
-  const incom = await Incom.findByPk(id)
-  return incom
-}
-
 //Controller PostIncoms
-const postIncoms = async (concept, amount, category, date) => {
+const creationIncom = async (concept, amount, category, date) => {
   let newIncom = await Incom.create({
     concept: concept,
     amount: amount,
@@ -18,6 +10,12 @@ const postIncoms = async (concept, amount, category, date) => {
     date: date,
   });
   return newIncom;
+};
+
+//Controller GetIncomById
+const getIncomById = async (id) => {
+  const incom = await Incom.findByPk(id);
+  return incom;
 };
 
 //Controller UpdateIncoms
@@ -45,8 +43,8 @@ const deleteIncoms = async (id) => {
 };
 
 module.exports = {
+  creationIncom,
   getIncomById,
-  postIncoms,
   updateIncoms,
   deleteIncoms,
 };

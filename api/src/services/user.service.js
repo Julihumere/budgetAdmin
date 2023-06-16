@@ -10,4 +10,14 @@ const getUsers = async () => {
   return allUsers;
 };
 
-module.exports = { getUsers };
+const getUser = async (email) => {
+  const user = await User.findByPk(email, {
+    include: [
+      { model: Incom, through: { attributes: [] } },
+      { model: Expense, through: { attributes: [] } },
+    ],
+  });
+  return user;
+};
+
+module.exports = { getUsers, getUser };

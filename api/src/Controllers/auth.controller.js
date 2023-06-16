@@ -1,16 +1,16 @@
 const authService = require("../services/auth.service.js");
 
-const registerController = async (req, res, next) => {
+const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   try {
-    let newUser = await authService.registerService(
+    let newUser = await authService.register(
       firstName,
       lastName,
       email,
       password
     );
     if (newUser) {
-      return res.status(200);
+      return res.status(201).send("USER_CREATED");
     }
   } catch (error) {
     next(error);
@@ -21,10 +21,13 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    let auth = await authService;
+    let auth = await authService.login(email, password);
+    if (auth) {
+      return res.status(200).send({ msg: "USER_LOGGED", auth });
+    }
   } catch (error) {
     next(error);
   }
 };
 
-module.exports = { registerController };
+module.exports = { register, login };
