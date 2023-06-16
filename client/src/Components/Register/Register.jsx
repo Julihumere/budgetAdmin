@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { postUsers } from "../../Redux/Actions";
+import { logIn, register } from "../../Redux/Actions";
 import "./Register.css";
 import Swal from "sweetalert2";
+
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -56,9 +57,10 @@ export default function Register() {
       });
     } else {
       setTimeout(() => {
-        dispatch(postUsers(user));
-        navigate("/login");
-      }, 3000);
+        dispatch(register(user));
+      }, 1500);
+      dispatch(logIn(user.email, user.password));
+      navigate("/login");
     }
   };
 

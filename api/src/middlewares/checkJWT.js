@@ -8,6 +8,7 @@ const checkJWT = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     res.locals.jwt = decoded;
+    req.headers.authorization = "";
     next();
   } catch (error) {
     return res.status(401).send({ message: "NOT_AUTHORIZED" });

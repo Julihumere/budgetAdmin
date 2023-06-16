@@ -7,8 +7,8 @@ incomRoutes.post("/creationIncom", checkJWT, incomController.creationIncom);
 
 incomRoutes.get("/:id", checkJWT, incomController.getIncom);
 
-incomRoutes.put("/updateIncom/:id", checkJWT, incomController.updateIncom);
+incomRoutes.put("/:id", checkJWT, incomController.updateIncom);
 
-incomRoutes.delete("/deleteIncom/:id", checkJWT, incomController.deleteIncom);
+incomRoutes.delete("/:id", checkJWT, incomController.deleteIncom);
 
 module.exports = incomRoutes;

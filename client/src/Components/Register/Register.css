@@ -12,8 +12,8 @@
   min-height: auto;
   border-radius: 20px;
   background: var(--color-cards);
-  box-shadow: var(--boxShadow);
   border: 1px solid white;
+  box-shadow: 27px 27px 53px #585858, -27px -27px 53px #464646;
 }
 
 .Register__form {

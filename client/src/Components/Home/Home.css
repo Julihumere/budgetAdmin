@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--color-background);
 }
 
 .Home__filtros {
@@ -69,7 +70,9 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 15px;
+  background: var(--color-background);
   box-shadow: var(--boxShadow);
+  border-radius: 20px;
 }
 
 .info_user > h2 {
@@ -94,6 +97,7 @@
   align-items: center;
   overflow-y: scroll;
   box-shadow: var(--boxShadow);
+  border-radius: 20px;
 }
 
 .addItem {

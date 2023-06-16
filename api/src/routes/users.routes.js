@@ -9,4 +9,10 @@ userRoutes.get("/users", userController.getUsers);
 //GET USER
 userRoutes.get("/:email", checkJWT, userController.getUser);
 
+// UPDATE USER
+userRoutes.put("/:email", checkJWT, userController.update);
+
+// DELETE USER
+userRoutes.delete("/:email", checkJWT, userController.deleteUser);
+
 module.exports = userRoutes;

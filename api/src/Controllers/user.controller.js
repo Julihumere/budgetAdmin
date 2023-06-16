@@ -27,62 +27,30 @@ const getUser = async (req, res, next) => {
   }
 };
 
-// Controller Authentication User.
-const authentication = async (email) => {
-  let user = await User.findOne({
-    where: {
-      email: { [Op.iLike]: `${email}` },
-    },
-  });
-  console.log("PRUEBA", user);
-  if (user === null) {
-    return "User not found";
+const update = async (req, res, next) => {
+  const { email } = req.params;
+  const { firstName, lastName } = req.body;
+  try {
+    const userUpdate = await userServices.update(email, firstName, lastName);
+    return res.status(200).send("USER_UPDATE");
+  } catch (error) {
+    next(error);
   }
-  return user;
 };
 
-//Controller Login User
-const login = async (email) => {
-  let userLogin = await await User.findOne({
-    where: {
-      email: { [Op.iLike]: `${email}` },
-    },
-  });
-  userLogin.update({ status: "Login" });
-  userLogin.save();
-  return userLogin;
-};
-
-//Controller Logout User
-
-const logout = async (email) => {
-  console.log("LOGOUT", email);
-  let userLogout = await await User.findOne({
-    where: {
-      email: { [Op.iLike]: `${email}` },
-    },
-  });
-  userLogout.update({ status: "Logout" });
-  userLogout.save();
-  return userLogout;
-};
-
-// Encriptacion
-const encrypt = async (textPlain) => {
-  const hash = await bcrypt.hash(textPlain, 10);
-  return hash;
-};
-
-// Comparacion
-const compare = async (passwordPlain, hashPassword) => {
-  return await bcrypt.compare(passwordPlain, hashPassword);
+const deleteUser = async (req, res, next) => {
+  const { email } = req.params;
+  try {
+    const userDelete = await userServices.deleteUser(email);
+    return res.status(200).send("USER_DELETE");
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
   getUsers,
   getUser,
-  authentication,
-  login,
-  logout,
-  compare,
+  update,
+  deleteUser,
 };

@@ -30,4 +30,17 @@ const login = async (req, res, next) => {
   }
 };
 
+//Controller Logout User
+const logout = async (email) => {
+  console.log("LOGOUT", email);
+  let userLogout = await await User.findOne({
+    where: {
+      email: { [Op.iLike]: `${email}` },
+    },
+  });
+  userLogout.update({ status: "Logout" });
+  userLogout.save();
+  return userLogout;
+};
+
 module.exports = { register, login };

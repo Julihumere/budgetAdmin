@@ -20,7 +20,12 @@ const getIncom = async (req, res, next) => {
   try {
     const { id } = req.params;
     const incom = await incomService.getIncomById(id);
-    res.status(200).json(incom);
+
+    if (incom) {
+      return res.status(200).json(incom);
+    } else {
+      res.status(400).json("INCOM_NOT_EXIST");
+    }
   } catch (error) {
     next(error);
   }
@@ -45,8 +50,7 @@ const updateIncom = async (req, res, next) => {
 const deleteIncom = async (req, res, next) => {
   const { id } = req.params;
   try {
-    let incomDeleted = await deleteIncoms(id);
-    await incomDeleted.destroy();
+    let incomDeleted = await incomService.deleteIncoms(id);
     res.status(200).send("Incom deleted!");
   } catch (error) {
     next(error);

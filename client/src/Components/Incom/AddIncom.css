@@ -1,10 +1,27 @@
 @import "react-calendar/dist/Calendar.css";
 .AddIncom__container {
   width: 100%;
-  height: 80vh;
+  height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--color-background);
+}
+
+.AddIcom_goBack {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  font-size: 20px;
+  background: var(--color-background);
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 20px;
 }
 
 .AddIncom__form {
@@ -25,21 +42,20 @@
 }
 
 .AddIncom__form label {
-  color: var(--color-letras-black);
+  color: var(--color-letras);
   font-size: 1.3rem;
   font-weight: 800;
 }
 
 .AddIncom__form input {
   border-radius: 50px;
-  background: var(--color-primary-button);
+  background: var(--color-background-input);
   box-shadow: var(--boxShadow);
   padding: 0.5rem 1rem;
   width: 100%;
   color: var(--color-letras-black);
   border: none;
 }
-
 .AddIncom__form input:focus {
   outline: transparent;
 }
@@ -64,7 +80,7 @@
   padding: 0 20px;
   border-radius: 98px;
   border: transparent solid 3px;
-  font-size: 18px;
+  font-size: 20px;
   background: var(--color-primary-button);
   color: var(--color-text-button);
   box-shadow: var(--boxShadow);

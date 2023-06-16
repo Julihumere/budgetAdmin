@@ -12,27 +12,27 @@
     rgba(15, 0, 187, 0.5775560224089635) 100%
   );
   --color-background-button: midnightblue;
-  --color-background-input: #e9e9f7;
+  --color-background-input: #c6c6c6;
   --color-border: #232363;
-  --color-boxShadow: #000;
+  --color-boxShadow: #a7a7a7;
   /* LANDING */
   --color-overview: #8689d9;
   --color-card-overview: #232363;
-  --color-letras-overview: #f4f6fb;
+  --color-letras-overview: #212121;
   --color-hover-button-overview: #8689d9;
 
   /* Neumorphism */
 
   --color-title: #728ab7;
-  --color-background: #efefef;
-  --color-cards: #f0f0f3;
-  --color-boxShadow-1: #bebebe;
-  --color-boxShadow-2: #ffffff;
+  --color-background: #212121;
+  --color-cards: #212121;
+  --color-boxShadow-1: #1e1e1e;
+  --color-boxShadow-2: #232323;
 
-  --color-primary-button: #f0f0f3;
+  --color-primary-button: #bcbcbc;
   --color-text-button: #808b9f;
-  --color-light: #ffffff;
-  --color-dark: rgba(174, 174, 192, 0.4);
+  --color-light: #393939;
+  --color-dark: #2d2d2d;
 
   --boxShadow: -10px -10px 30px var(--color-light),
     10px 10px 30px var(--color-dark);

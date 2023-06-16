@@ -14,15 +14,17 @@ export const ACCESS = "ACCESS";
 export const DENIED = "DENIED";
 export const LOGOUT = "LOGOUT";
 
-// const URL = `${process.env.REACT_APP_URL}`;
-const URL = "https://budgetadmin-o5dk.onrender.com";
+const URL = `${process.env.REACT_APP_URL}`;
+// const URL = "https://budgetadmin-o5dk.onrender.com";
+
+axios.defaults.baseURL = URL;
 
 //Get user
 export const getUser = (email) => (dispatch) => {
   try {
     axios({
       method: "get",
-      url: `${URL}/user/${email}`,
+      url: `/user/${email}`,
     }).then((res) => {
       dispatch({
         type: GET_USER,
@@ -34,13 +36,33 @@ export const getUser = (email) => (dispatch) => {
   }
 };
 
-//Post Users
-export const postUsers = (payload) => async (dispatch) => {
+//Login
+export const logIn = (payload) => () => {
   console.log(payload);
+  try {
+    axios({
+      method: "post",
+      url: `/auth/login`,
+      data: {
+        email: payload.email,
+        password: payload.password,
+      },
+    }).then((res) => {
+      document.cookie = res.data.auth.token;
+    });
+
+    console.log(document.cookie);
+  } catch (error) {
+    console.log("ERROR");
+  }
+};
+
+//Register
+export const register = (payload) => async (dispatch) => {
   try {
     const response = await axios({
       method: "post",
-      url: `${URL}/user/creationUser`,
+      url: `/auth/register`,
       data: {
         firstName: payload.firstName,
         lastName: payload.lastName,
@@ -48,7 +70,6 @@ export const postUsers = (payload) => async (dispatch) => {
         password: payload.password,
       },
     });
-    console.log(response);
     return response;
   } catch (error) {
     console.log("postUser", error);
@@ -60,7 +81,7 @@ export const getIncom = (id) => (dispatch) => {
   try {
     axios({
       method: "get",
-      url: `${URL}/incom/${id}`,
+      url: `/incom/${id}`,
     }).then((res) => {
       dispatch({
         type: GET_INCOM,
@@ -77,7 +98,7 @@ export const addIncom = (payload) => () => {
   try {
     axios({
       method: "post",
-      url: `${URL}/incom/creationIncom`,
+      url: `/incom/creationIncom`,
       data: {
         concept: payload.concept,
         amount: payload.amount,
@@ -97,7 +118,7 @@ export const editIncom = (payload) => () => {
   try {
     axios({
       method: "put",
-      url: `${URL}/incom/updateIncom/${payload.id}`,
+      url: `/incom/updateIncom/${payload.id}`,
       data: {
         id: payload.id,
         concept: payload.concept,
@@ -115,7 +136,7 @@ export const deleteIncom = (payload) => (dispatch) => {
   try {
     axios({
       method: "delete",
-      url: `${URL}/incom/deleteIncom/${payload}`,
+      url: `/incom/deleteIncom/${payload}`,
       data: {
         id: payload,
       },
@@ -130,7 +151,7 @@ export const getExpense = (id) => (dispatch) => {
   try {
     axios({
       method: "get",
-      url: `${URL}/expense/${id}`,
+      url: `/expense/${id}`,
     }).then((res) => {
       dispatch({
         type: GET_EXPENSE,
@@ -147,7 +168,7 @@ export const addExpense = (payload) => () => {
   try {
     axios({
       method: "post",
-      url: `${URL}/expense/creationExpense`,
+      url: `/expense/creationExpense`,
       data: {
         concept: payload.concept,
         amount: payload.amount,
@@ -166,7 +187,7 @@ export const editExpense = (payload) => () => {
   try {
     axios({
       method: "put",
-      url: `${URL}/expense/updateExpense`,
+      url: `/expense/updateExpense`,
       data: {
         id: payload.id,
         concept: payload.concept,
@@ -185,7 +206,7 @@ export const deleteExpense = (payload) => () => {
   try {
     axios({
       method: "delete",
-      url: `${URL}/expense/deleteExpense`,
+      url: `/expense/deleteExpense`,
       data: {
         id: payload,
       },
@@ -200,7 +221,7 @@ export const auth = (payload) => (dispatch) => {
   try {
     axios({
       method: "post",
-      url: `${URL}/user/auth`,
+      url: `/user/auth`,
       data: {
         email: payload.email,
         password: payload.password,
@@ -236,27 +257,12 @@ export const auth = (payload) => (dispatch) => {
   }
 };
 
-//Login
-export const logIn = (payload) => () => {
-  try {
-    axios({
-      method: "put",
-      url: `${URL}/user/login`,
-      data: {
-        email: payload.email,
-      },
-    });
-  } catch (error) {
-    console.log("ERROR");
-  }
-};
-
 //Logout
 export const logOut = (payload) => (dispatch) => {
   try {
     axios({
       method: "put",
-      url: `${URL}/user/logout`,
+      url: `/user/logout`,
       data: {
         email: payload,
       },

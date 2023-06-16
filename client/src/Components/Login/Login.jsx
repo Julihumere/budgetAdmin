@@ -58,7 +58,6 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(auth(user));
     dispatch(logIn(user));
   };
   return (

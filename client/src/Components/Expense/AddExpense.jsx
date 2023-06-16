@@ -6,6 +6,7 @@ import { addExpense } from "../../Redux/Actions";
 import Cookies from "universal-cookie";
 import Swal from "sweetalert2";
 import { Calendar } from "react-calendar";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 export default function AddIncom() {
   const dispatch = useDispatch();
@@ -77,8 +78,17 @@ export default function AddIncom() {
       });
     }
   };
+
+  const handleGoBack = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="AddExpense__container">
+      <button onClick={handleGoBack} className="AddIcom_goBack">
+        <BsFillArrowLeftCircleFill />
+        Volver
+      </button>
       <form className="AddExpense__form" onSubmit={onSubmit}>
         <div className="AddExpense__label_input">
           <label>Concept</label>

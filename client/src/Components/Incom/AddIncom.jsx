@@ -6,6 +6,7 @@ import { addIncom } from "../../Redux/Actions";
 import Cookies from "universal-cookie";
 import Swal from "sweetalert2";
 import { Calendar } from "react-calendar";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 export default function AddIncom() {
   const dispatch = useDispatch();
@@ -77,8 +78,17 @@ export default function AddIncom() {
       });
     }
   };
+
+  const handleGoBack = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="AddIncom__container">
+      <button onClick={handleGoBack} className="AddIcom_goBack">
+        <BsFillArrowLeftCircleFill />
+        Volver
+      </button>
       <form className="AddIncom__form" onSubmit={onSubmit}>
         <div className="AddIncom__label_input">
           <label>Concept</label>
@@ -135,16 +145,16 @@ export default function AddIncom() {
         </div>
         <button className="AddIncom__button_submit" type="submit">
           Create!
-        </button>     
+        </button>
       </form>
       {calendar && (
-            <Calendar
-              value={date}
-              onChange={onChangeDate}
-              className="calendar__responsive"
-              maxDate={new Date()}
-            />
-          )}
+        <Calendar
+          value={date}
+          onChange={onChangeDate}
+          className="calendar__responsive"
+          maxDate={new Date()}
+        />
+      )}
     </div>
   );
 }

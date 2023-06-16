@@ -20,7 +20,7 @@ const getIncomById = async (id) => {
 
 //Controller UpdateIncoms
 const updateIncoms = async (id, concept, amount, category) => {
-  let incomUpdated = await Incom.findByPk(id);
+  let incomUpdated = await getIncomById(id);
   if (concept) {
     await incomUpdated.update({ concept: concept });
     await incomUpdated.save();
@@ -38,8 +38,11 @@ const updateIncoms = async (id, concept, amount, category) => {
 
 //Controller DeleteIncoms
 const deleteIncoms = async (id) => {
-  let incomDeleted = await Incom.findByPk(id);
-  return incomDeleted;
+  let incomDeleted = await getIncomById(id);
+
+  await incomDeleted.destroy();
+
+  return;
 };
 
 module.exports = {
